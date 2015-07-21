@@ -1,0 +1,20 @@
+<html>
+<body>
+<div>
+	<input id = "info" type = "text"/>
+	<input id = "isTrue" type = "checkbox" value = "true">True</input>
+	<button id = "btnShowValue">Take One</button>
+</div>
+<script src ="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type ="text/javascript">
+	$(function(){
+		$('#btnShowValue').click(function(){
+			if($('#isTrue:checked').val())
+				alert($('#info').val().substr(0,1));
+			else 
+				alert($('#info').val().substr(($('#info').val().length-1),1));
+		})
+	})
+</script>
+</body>
+</html>

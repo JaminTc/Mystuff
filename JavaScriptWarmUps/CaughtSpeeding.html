@@ -1,0 +1,21 @@
+<Html>
+<Body>
+	<script>
+	var Speed = 85
+	var isBirthday = false
+	function caughtSpeeding(Speed, isBirthday){
+		if (!isBirthday && Speed <= 60|| isBirthday && Speed <= 65){
+			ticket = 0;
+		}
+		else if (!isBirthday && (Speed > 60 && Speed <= 80) || isBirthday && (Speed > 65 && Speed <= 85)){
+			ticket = 1;
+		}
+		else if (!isBirthday && Speed > 80 || isBirthday && Speed > 85){
+			ticket = 2;
+		}	
+		return ticket;
+	}
+	console.log(caughtSpeeding(Speed,isBirthday))
+	</script>
+</Body>
+</Html>

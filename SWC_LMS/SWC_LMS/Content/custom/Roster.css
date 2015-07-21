@@ -1,0 +1,73 @@
+﻿
+    .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+        background: #d3d3d3
+    }
+     .table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+        background: #ffffff
+    }
+    .RosterTable {
+        width: 90%;
+        border-collapse: collapse;
+        border-top: black 2px solid
+    }
+    .RosterTable td {
+        padding-left: 7px;
+        border: #000000 2px solid;
+    }
+    .UserTable {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: black 2px solid
+    }
+    .UserTable td {
+        padding-left: 7px;
+        border: #000000 2px solid;
+    }
+    .UserTable tbody tr {
+        height: 40px;
+
+    }
+    .table thead tr td {
+        padding: 1px;
+        background: #a9a9a9
+    }
+    .boxed {
+        height: 50px;
+        margin: 20px;
+        Border: 1px solid black
+    }
+    .search {
+        margin-top: 10px
+    }
+    .wide {
+        width: 125px
+    }
+    .button {
+        position: absolute;
+        right: 10px;
+    }
+    
+    fieldset.scheduler-border {
+        border: 2px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 2em 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    .header {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 18px;
+    }
+    .FirstName {
+        width: 30%;
+    }
+    .LastName {
+        width: 30%;
+    }
+    .Email {
+        width: 50%;
+    }
+    .RosterSide {
+        padding-left: 0;
+    }

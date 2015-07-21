@@ -1,0 +1,16 @@
+<html>
+	<body>
+	<h2>My favorite Cars</h2>
+	<div id= "cars"></div>
+	
+	<script>
+	var vehicle = '[{"Make": "Honda","Model": "Civic","Year" : "2002","Color":"Green" },{"Make": "Nissan","Model": "240sx","Year": "1997","Color": "White"},{"Make": "Ford","Model": "Ranger", "Year": "1994","Color":"Red"}]'
+		var car = JSON.parse(vehicle)
+		document.getElementById("cars").innerHTML =
+		car[0].Make + " " + car[0].Model + " " + car[0].Year + " " + car[0].Color + "<br>" +
+		car[1].Make + " " + car[1].Model + " " + car[1].Year + " " + car[1].Color + "<br>" +
+		car[2].Make + " " + car[2].Model + " " + car[2].Year + " " + car[2].Color;
+		
+	</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@using System.Collections
+@using System.Web.DynamicData
+@model List<LmsUser>
+
+@{
+    ViewBag.Title = "AdminDashboard";
+    var unassigned = from x in Model
+        where x.Id == null
+        select new {x.LastName, x.FirstName, x.Email, x.SuggestedRole, x.UserId};
+        
+    var assigned = from x in Model
+        where x.Id != null
+        select new {x.LastName, x.FirstName, x.Email, x.SuggestedRole, x.UserId};
+}
+<h2>Admin Dashboard</h2>
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/Admin.css")">
+}
+@if (unassigned.Any())
+{
+    <table class="UserTable table table-striped">
+        <thead>
+        <tr>
+            <td class="col-md-2">Last Name</td>
+            <td class="col-md-2">First Name</td>
+            <td class="col-md-4">Email</td>
+            <td class="col-md-2">Suggested Role</td>
+            <td class="col-md-2"></td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var user in unassigned)
+        {
+            <input class="hidden" value="@user.UserId"/>
+            <tr>
+                <td class="LastName"> @user.LastName</td>
+                <td class="FirstName"> @user.FirstName</td>
+                <td class="Email">@user.Email</td>
+                <td class="SuggestedRole">@user.SuggestedRole</td>
+                <td align="center">@Html.ActionLink("details", "Edit", "Admin", new {id = user.UserId}, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>Unassigned Users</h4>
+}
+<div>
+    <p>@Html.ActionLink("Search for user","AdminSearch","Admin")</p>
+</div>
+<table class="table table-striped UserTable">
+    <thead>
+    <tr style="background: #a9a9a9">
+        <td class="col-md-2">Last Name</td>
+        <td class="col-md-2">First Name</td>
+        <td class="col-md-4">Email</td>
+        <td class="col-md-2">Suggested Role</td>
+        <td class="col-md-2"></td>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in assigned)
+        {
+            <input class="hidden" value="@user.UserId" />
+            <tr>
+                <td class="LastName"> @user.LastName</td>
+                <td class="FirstName"> @user.FirstName</td>
+                <td class="Email">@user.Email</td>
+                <td class="SuggestedRole">@user.SuggestedRole</td>
+                <td align="center">@Html.ActionLink("details", "Edit", "Admin", new { id = user.UserId }, null)</td>
+            </tr>
+
+        }
+    </tbody>
+</table>

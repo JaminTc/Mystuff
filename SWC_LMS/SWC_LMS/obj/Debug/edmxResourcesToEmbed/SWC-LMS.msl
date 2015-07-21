@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SWC_LMSModelStoreContainer" CdmEntityContainer="SWC_LMSEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="SWC_LMSModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="SWC_LMSModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assignments">
+      <EntityTypeMapping TypeName="SWC_LMSModel.Assignment">
+        <MappingFragment StoreEntitySet="Assignment">
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+          <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="AssignmentDescription" ColumnName="AssignmentDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="SWC_LMSModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+          <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GradeLevels">
+      <EntityTypeMapping TypeName="SWC_LMSModel.GradeLevel">
+        <MappingFragment StoreEntitySet="GradeLevel">
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="GradeLevelName" ColumnName="GradeLevelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LmsUsers">
+      <EntityTypeMapping TypeName="SWC_LMSModel.LmsUser">
+        <MappingFragment StoreEntitySet="LmsUser">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rosters">
+      <EntityTypeMapping TypeName="SWC_LMSModel.Roster">
+        <MappingFragment StoreEntitySet="Roster">
+          <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RosterAssignments">
+      <EntityTypeMapping TypeName="SWC_LMSModel.RosterAssignment">
+        <MappingFragment StoreEntitySet="RosterAssignment">
+          <ScalarProperty Name="RosterAssignmentId" ColumnName="RosterAssignmentId" />
+          <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+          <ScalarProperty Name="PointsEarned" ColumnName="PointsEarned" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="SWC_LMSModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="SWC_LMSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StudentGuardian" TypeName="SWC_LMSModel.StudentGuardian" StoreEntitySet="StudentGuardian">
+      <EndProperty Name="LmsUser">
+        <ScalarProperty Name="UserId" ColumnName="GuardianId" />
+      </EndProperty>
+      <EndProperty Name="LmsUser1">
+        <ScalarProperty Name="UserId" ColumnName="StudentId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="GetAssignmentGrades" FunctionName="SWC_LMSModel.Store.GetAssignmentGrades">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetAssignmentGrades_Result">
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAssignmentsInCourse" FunctionName="SWC_LMSModel.Store.GetAssignmentsInCourse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetAssignmentsInCourse_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+          <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+          <ScalarProperty Name="AssignmentDescription" ColumnName="AssignmentDescription" />
+          <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRosterAssignments" FunctionName="SWC_LMSModel.Store.GetRosterAssignments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetRosterAssignments_Result">
+          <ScalarProperty Name="RosterAssignmentId" ColumnName="RosterAssignmentId" />
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+          <ScalarProperty Name="PointsEarned" ColumnName="PointsEarned" />
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentAndRosterId" FunctionName="SWC_LMSModel.Store.GetStudentAndRosterId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentAndRosterId_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+          <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentsInCourse" FunctionName="SWC_LMSModel.Store.GetStudentsInCourse">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentsInCourse_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GradeLevelSelectAll" FunctionName="SWC_LMSModel.Store.GradeLevelSelectAll" />
+    <FunctionImportMapping FunctionImportName="LmsUserInsert" FunctionName="SWC_LMSModel.Store.LmsUserInsert" />
+    <FunctionImportMapping FunctionImportName="LmsUserSelectByAspNetId" FunctionName="SWC_LMSModel.Store.LmsUserSelectByAspNetId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectByAspNetId_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LmsUserSelectRoleNames" FunctionName="SWC_LMSModel.Store.LmsUserSelectRoleNames" />
+    <FunctionImportMapping FunctionImportName="LmsUserSelectUnassigned" FunctionName="SWC_LMSModel.Store.LmsUserSelectUnassigned">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectUnassigned_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+          <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateAssignmentGrade" FunctionName="SWC_LMSModel.Store.UpdateAssignmentGrade" />
+    <FunctionImportMapping FunctionImportName="UpdateRosterCurrentGrade" FunctionName="SWC_LMSModel.Store.UpdateRosterCurrentGrade" />
+    <FunctionImportMapping FunctionImportName="LmsUserGetAll" FunctionName="SWC_LMSModel.Store.LmsUserGetAll" />
+    <FunctionImportMapping FunctionImportName="GetUserIdByEmail" FunctionName="SWC_LMSModel.Store.GetUserIdByEmail" />
+    <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="Students" ColumnName="Students" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ParentsChildren" FunctionName="SWC_LMSModel.Store.ParentsChildren" />
+    <FunctionImportMapping FunctionImportName="ChildrensInfo" FunctionName="SWC_LMSModel.Store.ChildrensInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.ChildrensInfo_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LmsUserEdit" FunctionName="SWC_LMSModel.Store.LmsUserEdit" />
+    <FunctionImportMapping FunctionImportName="AssignUserRole" FunctionName="SWC_LMSModel.Store.AssignUserRole" />
+    <FunctionImportMapping FunctionImportName="RemoveUserRole" FunctionName="SWC_LMSModel.Store.RemoveUserRole" />
+    <FunctionImportMapping FunctionImportName="GetGUidByEmail" FunctionName="SWC_LMSModel.Store.GetGUidByEmail" />
+    <FunctionImportMapping FunctionImportName="Lms_UsertoASPNETUser" FunctionName="SWC_LMSModel.Store.Lms_UsertoASPNETUser" />
+    <FunctionImportMapping FunctionImportName="GetThisCourse" FunctionName="SWC_LMSModel.Store.GetThisCourse" />
+    <FunctionImportMapping FunctionImportName="GetAllSubjects" FunctionName="SWC_LMSModel.Store.GetAllSubjects" />
+    <FunctionImportMapping FunctionImportName="AddNewCourse" FunctionName="SWC_LMSModel.Store.AddNewCourse" />
+    <FunctionImportMapping FunctionImportName="GetCoursesForStudent" FunctionName="SWC_LMSModel.Store.GetCoursesForStudent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetCoursesForStudent_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateRoster" FunctionName="SWC_LMSModel.Store.UpdateRoster" />
+    <FunctionImportMapping FunctionImportName="AddToRoster" FunctionName="SWC_LMSModel.Store.AddToRoster" />
+  </EntityContainerMapping>
+</Mapping>

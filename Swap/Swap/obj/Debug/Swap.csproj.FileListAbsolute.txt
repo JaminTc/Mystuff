@@ -1,0 +1,6 @@
+c:\users\codecamp\Desktop\git\Swap\Swap\bin\Debug\Swap.exe.config
+c:\users\codecamp\Desktop\git\Swap\Swap\bin\Debug\Swap.exe
+c:\users\codecamp\Desktop\git\Swap\Swap\bin\Debug\Swap.pdb
+c:\users\codecamp\Desktop\git\Swap\Swap\obj\Debug\Swap.csprojResolveAssemblyReference.cache
+c:\users\codecamp\Desktop\git\Swap\Swap\obj\Debug\Swap.exe
+c:\users\codecamp\Desktop\git\Swap\Swap\obj\Debug\Swap.pdb

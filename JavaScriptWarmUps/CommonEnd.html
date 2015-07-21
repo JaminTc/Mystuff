@@ -1,0 +1,42 @@
+<html>
+<body>
+
+
+<script>
+    window.onload= function (){
+        var btn = document.getElementById("resultBtn");
+        btn.onclick = function () {
+            // they clicked the button
+            var aTextBox = document.getElementById("aArray");
+            var a = aTextBox.value;
+
+            var bTextBox = document.getElementById("bArray");
+            var b = bTextBox.value;
+			if(a[0]===b[0] || a[a.length-1] === b[b.length-1])
+				resultText = true;
+			else resultText = false;
+            
+            var resultDiv = document.getElementById("resultDiv");
+
+            var textNode = document.createTextNode(resultText);
+            resultDiv.appendChild(textNode);
+        };
+    }
+</script>
+
+<div>
+    A Text: <input type="array" id="aArray"/>
+    <br />
+    B Text: <input type="array" id="bArray" />
+</div>
+
+<div>
+    <button id="resultBtn">Click For Result</button>
+</div>
+<hr />
+<div id="resultDiv">
+    
+</div>
+
+</body>
+</html>

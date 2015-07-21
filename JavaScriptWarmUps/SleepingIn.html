@@ -1,0 +1,17 @@
+<Html>
+<Body>
+	<script>
+	var weekday = true
+	var vacation = false
+	function sleepingIn(weekday,vacation){
+		if ((weekday && vacation) || !weekday && (vacation || !vacation))
+			 sleeping = true;
+		else 
+			sleeping = false;
+		return sleeping;
+	}
+	
+		 console.log(sleepingIn(weekday,vacation))
+	</script>
+</Body>
+</Html>

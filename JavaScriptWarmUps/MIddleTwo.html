@@ -1,0 +1,18 @@
+<html>
+<body>
+	<div>
+		<input id = "info" type ="text"/>
+		<button id = "btnShowValue">Middle Two</button>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type ="text/javascript">
+		$(function(){
+			$('#btnShowValue').click(function(){
+			var str = $('#info').val();
+			var str1 = str.substr(((str.length-1)/2),2);
+			alert(str1);
+			})
+		})
+	</script>
+</body>
+<html>

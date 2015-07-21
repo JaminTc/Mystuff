@@ -1,0 +1,1456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SWC_LMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="AssignmentId" />
+          </Key>
+          <Property Name="AssignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="AssignmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PossiblePoints" Type="int" Nullable="false" />
+          <Property Name="DueDate" Type="date" Nullable="false" />
+          <Property Name="AssignmentDescription" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseDescription" Type="varchar" MaxLength="255" />
+          <Property Name="GradeLevel" Type="tinyint" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GradeLevel">
+          <Key>
+            <PropertyRef Name="GradeLevelId" />
+          </Key>
+          <Property Name="GradeLevelId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GradeLevelName" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LmsUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SuggestedRole" Type="varchar" MaxLength="50" />
+          <Property Name="GradeLevelId" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Roster">
+          <Key>
+            <PropertyRef Name="RosterId" />
+          </Key>
+          <Property Name="RosterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CurrentGrade" Type="varchar" MaxLength="3" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RosterAssignment">
+          <Key>
+            <PropertyRef Name="RosterAssignmentId" />
+          </Key>
+          <Property Name="RosterAssignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RosterId" Type="int" Nullable="false" />
+          <Property Name="AssignmentId" Type="int" Nullable="false" />
+          <Property Name="PointsEarned" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Percentage" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Grade" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="StudentGuardian">
+          <Key>
+            <PropertyRef Name="GuardianId" />
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="GuardianId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Assignmen__Cours__20C1E124">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__SubjectI__182C9B23">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__UserId__173876EA">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LmsUser__GradeLe__1273C1CD">
+          <End Role="GradeLevel" Type="Self.GradeLevel" Multiplicity="0..1" />
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevel">
+              <PropertyRef Name="GradeLevelId" />
+            </Principal>
+            <Dependent Role="LmsUser">
+              <PropertyRef Name="GradeLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Roster__CourseId__1BFD2C07">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Roster" Type="Self.Roster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Roster">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Roster__UserId__1CF15040">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="Roster" Type="Self.Roster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roster">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RosterAss__Assig__24927208">
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="1" />
+          <End Role="RosterAssignment" Type="Self.RosterAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="RosterAssignment">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RosterAss__Roste__239E4DCF">
+          <End Role="Roster" Type="Self.Roster" Multiplicity="1" />
+          <End Role="RosterAssignment" Type="Self.RosterAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roster">
+              <PropertyRef Name="RosterId" />
+            </Principal>
+            <Dependent Role="RosterAssignment">
+              <PropertyRef Name="RosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentGu__Guard__276EDEB3">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="StudentGuardian" Type="Self.StudentGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="StudentGuardian">
+              <PropertyRef Name="GuardianId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentGu__Stude__286302EC">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="StudentGuardian" Type="Self.StudentGuardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="StudentGuardian">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddNewCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="SubjectId" Type="int" Mode="In" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseDescription" Type="varchar" Mode="In" />
+          <Parameter Name="GradeLevel" Type="tinyint" Mode="In" />
+          <Parameter Name="IsArchived" Type="bit" Mode="In" />
+          <Parameter Name="StartDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AddToRoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="courseId" Type="int" Mode="In" />
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="isDeleted" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AssignUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ChildrensInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllSubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAssignmentGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RosterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAssignmentsInCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCoursesForStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGUidByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetRosterAssignments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RosterId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStudentAndRosterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetStudentsInCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTeachersCourseInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetThisCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserIdByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GradeLevelSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Lms_UsertoASPNETUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LmsUserEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="GuidId" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="GradeLevelId" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="LmsUserGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="LmsUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="GradeLevelId" Type="tinyint" Mode="In" />
+          <Parameter Name="SuggestedRole" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="LmsUserSelectByAspNetId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="LmsUserSelectByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LmsUserSelectRoleNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LmsUserSelectUnassigned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ParentsChildren" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAssignmentGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RosterAssignmentId" Type="int" Mode="In" />
+          <Parameter Name="PointsEarned" Type="decimal" Mode="In" />
+          <Parameter Name="Percentage" Type="decimal" Mode="In" />
+          <Parameter Name="GradeLetter" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateRoster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+          <Parameter Name="IsDeleted" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateRosterCurrentGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RosterAssignmentId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SWC_LMSModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GradeLevel" EntityType="Self.GradeLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LmsUser" EntityType="Self.LmsUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roster" EntityType="Self.Roster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RosterAssignment" EntityType="Self.RosterAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentGuardian" EntityType="Self.StudentGuardian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Assignmen__Cours__20C1E124" Association="Self.FK__Assignmen__Cours__20C1E124">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__SubjectI__182C9B23" Association="Self.FK__Course__SubjectI__182C9B23">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__UserId__173876EA" Association="Self.FK__Course__UserId__173876EA">
+            <End Role="LmsUser" EntitySet="LmsUser" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LmsUser__GradeLe__1273C1CD" Association="Self.FK__LmsUser__GradeLe__1273C1CD">
+            <End Role="GradeLevel" EntitySet="GradeLevel" />
+            <End Role="LmsUser" EntitySet="LmsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Roster__CourseId__1BFD2C07" Association="Self.FK__Roster__CourseId__1BFD2C07">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Roster" EntitySet="Roster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Roster__UserId__1CF15040" Association="Self.FK__Roster__UserId__1CF15040">
+            <End Role="LmsUser" EntitySet="LmsUser" />
+            <End Role="Roster" EntitySet="Roster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RosterAss__Assig__24927208" Association="Self.FK__RosterAss__Assig__24927208">
+            <End Role="Assignment" EntitySet="Assignment" />
+            <End Role="RosterAssignment" EntitySet="RosterAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RosterAss__Roste__239E4DCF" Association="Self.FK__RosterAss__Roste__239E4DCF">
+            <End Role="Roster" EntitySet="Roster" />
+            <End Role="RosterAssignment" EntitySet="RosterAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentGu__Guard__276EDEB3" Association="Self.FK__StudentGu__Guard__276EDEB3">
+            <End Role="LmsUser" EntitySet="LmsUser" />
+            <End Role="StudentGuardian" EntitySet="StudentGuardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentGu__Stude__286302EC" Association="Self.FK__StudentGu__Stude__286302EC">
+            <End Role="LmsUser" EntitySet="LmsUser" />
+            <End Role="StudentGuardian" EntitySet="StudentGuardian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SWC_LMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="AssignmentId" />
+          </Key>
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="AssignmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PossiblePoints" Type="Int32" Nullable="false" />
+          <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AssignmentDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Assignmen__Cours__20C1E124" FromRole="Assignment" ToRole="Course" />
+          <NavigationProperty Name="RosterAssignments" Relationship="Self.FK__RosterAss__Assig__24927208" FromRole="Assignment" ToRole="RosterAssignment" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GradeLevel" Type="Byte" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK__Assignmen__Cours__20C1E124" FromRole="Course" ToRole="Assignment" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Course__SubjectI__182C9B23" FromRole="Course" ToRole="Subject" />
+          <NavigationProperty Name="LmsUser" Relationship="Self.FK__Course__UserId__173876EA" FromRole="Course" ToRole="LmsUser" />
+          <NavigationProperty Name="Rosters" Relationship="Self.FK__Roster__CourseId__1BFD2C07" FromRole="Course" ToRole="Roster" />
+        </EntityType>
+        <EntityType Name="GradeLevel">
+          <Key>
+            <PropertyRef Name="GradeLevelId" />
+          </Key>
+          <Property Name="GradeLevelId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GradeLevelName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LmsUsers" Relationship="Self.FK__LmsUser__GradeLe__1273C1CD" FromRole="GradeLevel" ToRole="LmsUser" />
+        </EntityType>
+        <EntityType Name="LmsUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SuggestedRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GradeLevelId" Type="Byte" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Course__UserId__173876EA" FromRole="LmsUser" ToRole="Course" />
+          <NavigationProperty Name="GradeLevel" Relationship="Self.FK__LmsUser__GradeLe__1273C1CD" FromRole="LmsUser" ToRole="GradeLevel" />
+          <NavigationProperty Name="Rosters" Relationship="Self.FK__Roster__UserId__1CF15040" FromRole="LmsUser" ToRole="Roster" />
+          <NavigationProperty Name="LmsUser1" Relationship="Self.StudentGuardian" FromRole="LmsUser" ToRole="LmsUser1" />
+          <NavigationProperty Name="LmsUsers" Relationship="Self.StudentGuardian" FromRole="LmsUser1" ToRole="LmsUser" />
+        </EntityType>
+        <EntityType Name="Roster">
+          <Key>
+            <PropertyRef Name="RosterId" />
+          </Key>
+          <Property Name="RosterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentGrade" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK__Roster__CourseId__1BFD2C07" FromRole="Roster" ToRole="Course" />
+          <NavigationProperty Name="LmsUser" Relationship="Self.FK__Roster__UserId__1CF15040" FromRole="Roster" ToRole="LmsUser" />
+          <NavigationProperty Name="RosterAssignments" Relationship="Self.FK__RosterAss__Roste__239E4DCF" FromRole="Roster" ToRole="RosterAssignment" />
+        </EntityType>
+        <EntityType Name="RosterAssignment">
+          <Key>
+            <PropertyRef Name="RosterAssignmentId" />
+          </Key>
+          <Property Name="RosterAssignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RosterId" Type="Int32" Nullable="false" />
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" />
+          <Property Name="PointsEarned" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Percentage" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Grade" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Assignment" Relationship="Self.FK__RosterAss__Assig__24927208" FromRole="RosterAssignment" ToRole="Assignment" />
+          <NavigationProperty Name="Roster" Relationship="Self.FK__RosterAss__Roste__239E4DCF" FromRole="RosterAssignment" ToRole="Roster" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Course__SubjectI__182C9B23" FromRole="Subject" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__Cours__20C1E124">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RosterAss__Assig__24927208">
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="1" />
+          <End Role="RosterAssignment" Type="Self.RosterAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="RosterAssignment">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__SubjectI__182C9B23">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__UserId__173876EA">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Roster__CourseId__1BFD2C07">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Roster" Type="Self.Roster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Roster">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LmsUser__GradeLe__1273C1CD">
+          <End Role="GradeLevel" Type="Self.GradeLevel" Multiplicity="0..1" />
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GradeLevel">
+              <PropertyRef Name="GradeLevelId" />
+            </Principal>
+            <Dependent Role="LmsUser">
+              <PropertyRef Name="GradeLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Roster__UserId__1CF15040">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="1" />
+          <End Role="Roster" Type="Self.Roster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LmsUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roster">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RosterAss__Roste__239E4DCF">
+          <End Role="Roster" Type="Self.Roster" Multiplicity="1" />
+          <End Role="RosterAssignment" Type="Self.RosterAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roster">
+              <PropertyRef Name="RosterId" />
+            </Principal>
+            <Dependent Role="RosterAssignment">
+              <PropertyRef Name="RosterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="StudentGuardian">
+          <End Role="LmsUser" Type="Self.LmsUser" Multiplicity="*" />
+          <End Role="LmsUser1" Type="Self.LmsUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SWC_LMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Assignments" EntityType="Self.Assignment" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="GradeLevels" EntityType="Self.GradeLevel" />
+          <EntitySet Name="LmsUsers" EntityType="Self.LmsUser" />
+          <EntitySet Name="Rosters" EntityType="Self.Roster" />
+          <EntitySet Name="RosterAssignments" EntityType="Self.RosterAssignment" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__Cours__20C1E124" Association="Self.FK__Assignmen__Cours__20C1E124">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RosterAss__Assig__24927208" Association="Self.FK__RosterAss__Assig__24927208">
+            <End Role="Assignment" EntitySet="Assignments" />
+            <End Role="RosterAssignment" EntitySet="RosterAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__SubjectI__182C9B23" Association="Self.FK__Course__SubjectI__182C9B23">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__UserId__173876EA" Association="Self.FK__Course__UserId__173876EA">
+            <End Role="LmsUser" EntitySet="LmsUsers" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Roster__CourseId__1BFD2C07" Association="Self.FK__Roster__CourseId__1BFD2C07">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Roster" EntitySet="Rosters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LmsUser__GradeLe__1273C1CD" Association="Self.FK__LmsUser__GradeLe__1273C1CD">
+            <End Role="GradeLevel" EntitySet="GradeLevels" />
+            <End Role="LmsUser" EntitySet="LmsUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Roster__UserId__1CF15040" Association="Self.FK__Roster__UserId__1CF15040">
+            <End Role="LmsUser" EntitySet="LmsUsers" />
+            <End Role="Roster" EntitySet="Rosters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RosterAss__Roste__239E4DCF" Association="Self.FK__RosterAss__Roste__239E4DCF">
+            <End Role="Roster" EntitySet="Rosters" />
+            <End Role="RosterAssignment" EntitySet="RosterAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="StudentGuardian" Association="Self.StudentGuardian">
+            <End Role="LmsUser" EntitySet="LmsUsers" />
+            <End Role="LmsUser1" EntitySet="LmsUsers" />
+          </AssociationSet>
+          <FunctionImport Name="GetAssignmentGrades" ReturnType="Collection(SWC_LMSModel.GetAssignmentGrades_Result)">
+          <Parameter Name="RosterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAssignmentsInCourse" ReturnType="Collection(SWC_LMSModel.GetAssignmentsInCourse_Result)">
+          <Parameter Name="CourseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRosterAssignments" ReturnType="Collection(SWC_LMSModel.GetRosterAssignments_Result)">
+          <Parameter Name="RosterId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentAndRosterId" ReturnType="Collection(SWC_LMSModel.GetStudentAndRosterId_Result)">
+          <Parameter Name="CourseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudentsInCourse" ReturnType="Collection(SWC_LMSModel.GetStudentsInCourse_Result)">
+          <Parameter Name="CourseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GradeLevelSelectAll" EntitySet="GradeLevels" ReturnType="Collection(SWC_LMSModel.GradeLevel)" />
+          <FunctionImport Name="LmsUserInsert">
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="GradeLevelId" Mode="In" Type="Byte" />
+            <Parameter Name="SuggestedRole" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LmsUserSelectByAspNetId" ReturnType="Collection(SWC_LMSModel.LmsUserSelectByAspNetId_Result)">
+          <Parameter Name="Id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LmsUserSelectByUserId" ReturnType="Collection(SWC_LMSModel.LmsUserSelectByUserId_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LmsUserSelectRoleNames" ReturnType="Collection(String)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LmsUserSelectUnassigned" ReturnType="Collection(SWC_LMSModel.LmsUserSelectUnassigned_Result)" />
+          <FunctionImport Name="UpdateAssignmentGrade">
+            <Parameter Name="RosterAssignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="PointsEarned" Mode="In" Type="Decimal" />
+            <Parameter Name="Percentage" Mode="In" Type="Decimal" />
+            <Parameter Name="GradeLetter" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRosterCurrentGrade">
+          <Parameter Name="RosterAssignmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllRoles" EntitySet="AspNetRoles" ReturnType="Collection(SWC_LMSModel.AspNetRole)" />
+          <FunctionImport Name="LmsUserGetAll" EntitySet="LmsUsers" ReturnType="Collection(SWC_LMSModel.LmsUser)" />
+          <FunctionImport Name="GetUserIdByEmail" ReturnType="Collection(Int32)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeachersCourseInfo" ReturnType="Collection(SWC_LMSModel.GetTeachersCourseInfo_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SWC_LMSModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SWC_LMSModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="ParentsChildren" ReturnType="Collection(Int32)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChildrensInfo" ReturnType="Collection(SWC_LMSModel.ChildrensInfo_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LmsUserEdit">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="GuidId" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="GradeLevelId" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="AssignUserRole">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="RoleID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveUserRole">
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetGUidByEmail" ReturnType="Collection(String)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Lms_UsertoASPNETUser">
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetThisCourse" EntitySet="Courses" ReturnType="Collection(SWC_LMSModel.Course)">
+          <Parameter Name="CourseId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllSubjects" EntitySet="Subjects" ReturnType="Collection(SWC_LMSModel.Subject)" />
+          <FunctionImport Name="AddNewCourse">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="CourseDescription" Mode="In" Type="String" />
+            <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
+            <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetCoursesForStudent" ReturnType="Collection(SWC_LMSModel.GetCoursesForStudent_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AlterCourse">
+            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="CourseDescription" Mode="In" Type="String" />
+            <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
+            <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AddNewAssignment">
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+            <Parameter Name="AssingmentName" Mode="In" Type="String" />
+            <Parameter Name="PossiblePoints" Mode="In" Type="Int32" />
+            <Parameter Name="DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AssingmentDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateRoster">
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+            <Parameter Name="IsDeleted" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddToRoster">
+            <Parameter Name="courseId" Mode="In" Type="Int32" />
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="isDeleted" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAssignmentGrades_Result">
+          <Property Type="String" Name="Grade" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="Percentage" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="AssignmentName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAssignmentsInCourse_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="AssignmentId" Nullable="false" />
+          <Property Type="String" Name="AssignmentName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AssignmentDescription" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="PossiblePoints" Nullable="false" />
+          <Property Type="DateTime" Name="DueDate" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetRosterAssignments_Result">
+          <Property Type="Int32" Name="RosterAssignmentId" Nullable="true" />
+          <Property Type="Int32" Name="AssignmentId" Nullable="true" />
+          <Property Type="Decimal" Name="PointsEarned" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Percentage" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="PossiblePoints" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetStudentAndRosterId_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="RosterId" Nullable="false" />
+          <Property Type="String" Name="CurrentGrade" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="GetStudentsInCourse_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevel" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GradeLevelSelectAll_Result">
+          <Property Type="Byte" Name="GradeLevelId" Nullable="false" />
+          <Property Type="String" Name="GradeLevelName" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="LmsUserSelectByAspNetId_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LmsUserSelectByUserId_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LmsUserSelectUnassigned_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="LmsUserSelectByUserId1_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllLmsUsers_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllRoles_Result">
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+        </ComplexType>
+        <ComplexType Name="LmsUserGetAll_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SuggestedRole" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="GradeLevelId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetTeachersCourseInfo_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="Int32" Name="Students" Nullable="true" />
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          </ComplexType>
+        <ComplexType Name="ChildrensInfo_Result">
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetThisCourse_Result">
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CourseDescription" Nullable="true" MaxLength="255" />
+          <Property Type="Byte" Name="GradeLevel" Nullable="false" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllSubjects_Result">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCoursesForStudent_Result">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="StudentId" Nullable="false" />
+          <Property Type="Int32" Name="RosterId" Nullable="false" />
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          <Property Type="String" Name="CurrentGrade" Nullable="true" MaxLength="3" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SWC_LMSModelStoreContainer" CdmEntityContainer="SWC_LMSEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="SWC_LMSModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SWC_LMSModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SWC_LMSModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="SWC_LMSModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignment">
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+                <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="AssignmentDescription" ColumnName="AssignmentDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SWC_LMSModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseDescription" ColumnName="CourseDescription" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GradeLevels">
+            <EntityTypeMapping TypeName="SWC_LMSModel.GradeLevel">
+              <MappingFragment StoreEntitySet="GradeLevel">
+                <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+                <ScalarProperty Name="GradeLevelName" ColumnName="GradeLevelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LmsUsers">
+            <EntityTypeMapping TypeName="SWC_LMSModel.LmsUser">
+              <MappingFragment StoreEntitySet="LmsUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+                <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rosters">
+            <EntityTypeMapping TypeName="SWC_LMSModel.Roster">
+              <MappingFragment StoreEntitySet="Roster">
+                <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RosterAssignments">
+            <EntityTypeMapping TypeName="SWC_LMSModel.RosterAssignment">
+              <MappingFragment StoreEntitySet="RosterAssignment">
+                <ScalarProperty Name="RosterAssignmentId" ColumnName="RosterAssignmentId" />
+                <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="PointsEarned" ColumnName="PointsEarned" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="SWC_LMSModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SWC_LMSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="StudentGuardian" TypeName="SWC_LMSModel.StudentGuardian" StoreEntitySet="StudentGuardian">
+            <EndProperty Name="LmsUser">
+              <ScalarProperty Name="UserId" ColumnName="GuardianId" />
+            </EndProperty>
+            <EndProperty Name="LmsUser1">
+              <ScalarProperty Name="UserId" ColumnName="StudentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetAssignmentGrades" FunctionName="SWC_LMSModel.Store.GetAssignmentGrades">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetAssignmentGrades_Result">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAssignmentsInCourse" FunctionName="SWC_LMSModel.Store.GetAssignmentsInCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetAssignmentsInCourse_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+                <ScalarProperty Name="AssignmentDescription" ColumnName="AssignmentDescription" />
+                <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRosterAssignments" FunctionName="SWC_LMSModel.Store.GetRosterAssignments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetRosterAssignments_Result">
+                <ScalarProperty Name="RosterAssignmentId" ColumnName="RosterAssignmentId" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="PointsEarned" ColumnName="PointsEarned" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="PossiblePoints" ColumnName="PossiblePoints" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentAndRosterId" FunctionName="SWC_LMSModel.Store.GetStudentAndRosterId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentAndRosterId_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+                <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentsInCourse" FunctionName="SWC_LMSModel.Store.GetStudentsInCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetStudentsInCourse_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GradeLevel" ColumnName="GradeLevel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GradeLevelSelectAll" FunctionName="SWC_LMSModel.Store.GradeLevelSelectAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LmsUserInsert" FunctionName="SWC_LMSModel.Store.LmsUserInsert" />
+          <FunctionImportMapping FunctionImportName="LmsUserSelectByAspNetId" FunctionName="SWC_LMSModel.Store.LmsUserSelectByAspNetId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectByAspNetId_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+                <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LmsUserSelectRoleNames" FunctionName="SWC_LMSModel.Store.LmsUserSelectRoleNames" />
+          <FunctionImportMapping FunctionImportName="LmsUserSelectUnassigned" FunctionName="SWC_LMSModel.Store.LmsUserSelectUnassigned">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.LmsUserSelectUnassigned_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SuggestedRole" ColumnName="SuggestedRole" />
+                <ScalarProperty Name="GradeLevelId" ColumnName="GradeLevelId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateAssignmentGrade" FunctionName="SWC_LMSModel.Store.UpdateAssignmentGrade" />
+          <FunctionImportMapping FunctionImportName="UpdateRosterCurrentGrade" FunctionName="SWC_LMSModel.Store.UpdateRosterCurrentGrade" />
+          <FunctionImportMapping FunctionImportName="LmsUserGetAll" FunctionName="SWC_LMSModel.Store.LmsUserGetAll">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUserIdByEmail" FunctionName="SWC_LMSModel.Store.GetUserIdByEmail" />
+          <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="Students" ColumnName="Students" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ParentsChildren" FunctionName="SWC_LMSModel.Store.ParentsChildren" />
+          <FunctionImportMapping FunctionImportName="ChildrensInfo" FunctionName="SWC_LMSModel.Store.ChildrensInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.ChildrensInfo_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LmsUserEdit" FunctionName="SWC_LMSModel.Store.LmsUserEdit" />
+          <FunctionImportMapping FunctionImportName="AssignUserRole" FunctionName="SWC_LMSModel.Store.AssignUserRole" />
+          <FunctionImportMapping FunctionImportName="RemoveUserRole" FunctionName="SWC_LMSModel.Store.RemoveUserRole" />
+          <FunctionImportMapping FunctionImportName="GetGUidByEmail" FunctionName="SWC_LMSModel.Store.GetGUidByEmail" />
+          <FunctionImportMapping FunctionImportName="Lms_UsertoASPNETUser" FunctionName="SWC_LMSModel.Store.Lms_UsertoASPNETUser" />
+          <FunctionImportMapping FunctionImportName="GetThisCourse" FunctionName="SWC_LMSModel.Store.GetThisCourse">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllSubjects" FunctionName="SWC_LMSModel.Store.GetAllSubjects">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddNewCourse" FunctionName="SWC_LMSModel.Store.AddNewCourse" />
+          <FunctionImportMapping FunctionImportName="GetCoursesForStudent" FunctionName="SWC_LMSModel.Store.GetCoursesForStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetCoursesForStudent_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="RosterId" ColumnName="RosterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CurrentGrade" ColumnName="CurrentGrade" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateRoster" FunctionName="SWC_LMSModel.Store.UpdateRoster" />
+          <FunctionImportMapping FunctionImportName="AddToRoster" FunctionName="SWC_LMSModel.Store.AddToRoster" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

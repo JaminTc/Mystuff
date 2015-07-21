@@ -1,0 +1,38 @@
+﻿@using System.Collections
+@model List<SWC_LMS.Models.Views.ParentViewModel>
+
+@{
+    ViewBag.Title = "ParentDashboard";
+   
+}
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/TechRentStudDash.css")">
+}
+
+<h3>ParentDashboard</h3>
+
+<div>
+    <p>My Classes</p>
+</div>
+<div>
+    <fieldset class="fieldset">
+       
+        <div style="clear: both;"></div>
+        <table>
+            @foreach (var x in Model)
+            {
+                <tr class=" classbox">
+                    <td>
+                        <div class="cellLeft">@x.FirstName&nbsp;@x.LastName</div>
+                        <input class="cellRight" type="button" value="View Classes" onclick="location.href='@Url.Action("StudentDashboard", "ParentAndStudent", new {id=@x.UserId} )'" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+</div>
+
+
+

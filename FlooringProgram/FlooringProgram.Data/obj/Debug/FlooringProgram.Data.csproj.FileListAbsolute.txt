@@ -1,0 +1,14 @@
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Data.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Data.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Models.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Models.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.csprojResolveAssemblyReference.cache
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.pdb
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Data.dll
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Data.pdb
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Models.dll
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\bin\Debug\FlooringProgram.Models.pdb
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.csprojResolveAssemblyReference.cache
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.dll
+C:\Users\CodeCamp\Desktop\git\FlooringProgram\FlooringProgram.Data\obj\Debug\FlooringProgram.Data.pdb

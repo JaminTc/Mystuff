@@ -1,0 +1,34 @@
+<html>
+	<body>
+	<h2>My favorite Cars</h2>
+	<div id= "car1"></div></br>
+	<div id= "car2"></div></br>
+	<div id= "car3"></div></br>
+	
+	<script>
+		var text = '{"Make": "Honda","Model": "Civic","Year" : "2002","Color":"Green" }';
+		var obj = JSON.parse(text);
+		document.getElementById("car1").innerHTML =
+		obj.Make + "<br>" +
+		obj.Model + "<br>" +
+		obj.Year + "<br>" +
+		obj.Color;
+	
+		var text2 = '{"Make": "Nissan","Model": "240sx","Year": "1997","Color": "White"}';
+		var obj2 = JSON.parse(text2);
+		document.getElementById("car2").innerHTML =
+		obj2.Make +"<br>" +
+		obj2.Model + "<br>"+
+		obj2.Year +"<br>" +
+		obj2.Color;
+		
+		var text3 = '{"Make": "Ford","Model": "Ranger", "Year": "1994","Color":"Red"}';
+		var obj3 = JSON.parse(text3);
+		document.getElementById("car3").innerHTML = 
+		obj3.Make + "<br>" +
+		obj3.Model + "<br>" +
+		obj3.Year + "<br> "+
+		obj3.Color;
+	</script>
+	</body>
+</html>

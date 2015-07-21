@@ -1,0 +1,17 @@
+<Html>
+<Body>
+	<script>
+	var str = "abcxxx"
+	function countXX(str){
+		var count = 0;
+		for (i = 0; i < str.length -1; i++){
+			if(str.substr(i,2) === "xx")
+			count++;
+		}
+		return count;
+	}
+	
+	console.log(countXX(str))
+	</script>
+</Body>
+</Html>

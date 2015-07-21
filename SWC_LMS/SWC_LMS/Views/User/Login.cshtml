@@ -1,0 +1,130 @@
+﻿@model SWC_LMS.Models.LmsUserViewRegistration
+
+@{
+    ViewBag.Title = "AddUser";
+}
+
+<style type="text/css">
+    .Title {
+        margin: 20px 0 50px 175px;
+    }
+    .User {
+        margin-bottom: 15px;
+        
+    }
+    .Existing {
+        margin: 0 30px 0 30px;
+        border: 1px solid black
+    }
+  
+    .tbox {
+        padding-right: 20px;
+        margin: 5px 15px 5px 0;
+        width:25em;
+        float: left;
+        text-align: right;
+        margin-right: 0.5em;
+        display: block
+    }
+    .tbox.Role {
+        padding-right: 113px
+    }
+    .tbox.Gradelevel {
+        padding-right: 99px
+    }
+    .tbox.RegButton {
+        padding-right: 125px
+    }
+    .tbox.Login {
+        padding-right: 143px
+    }
+    .fieldsetRegister {
+        padding: 20px 0 20px 0;
+        border: 1px solid #781351;
+        width: 27em
+    }
+    .fieldsetExisting {
+        padding: 20px 0 20px 0;
+        border: 1px solid #781351;
+        width: 15em
+    }
+</style>
+
+
+<h3 class="Title">Software Craftsmanship Guild - Learning Management System</h3>
+
+<div class="row User">
+    <div class="col-md-6">Existing Users Log In Here</div>
+    <div class="col-md-6">New User? Register Now!</div>
+</div>
+
+<div class="row User">
+    <div class="col-md-6">
+        <fieldset class="fieldsetExisting">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="tbox">
+                    <label for="Email">Email&nbsp;</label>
+                    @Html.TextBoxFor(model => model.Email, new {id = "Email", @class = "wide", @type="text"})
+                </div>
+                <div class="tbox">
+                    <label for="Password">Password&nbsp;</label>
+                    @Html.TextBoxFor(model => model.Password, new { id = "Password", @class = "wide", @type = "password" })
+                </div>
+                <div class="tbox Login">
+                    <button class="button search-btn">Login</button>
+                </div>
+            }
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+                                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <fieldset class="fieldsetRegister">
+                                <div class=" tbox">
+                                        <label for="FName">First Name&nbsp;</label>
+                                        @Html.TextBoxFor(model => model.FirstName, new { id = "FName", @class = "wide" })
+                                </div>
+                                <div class="tbox">
+                                    <label for="LName">Last Name&nbsp;</label>
+                                    @Html.TextBoxFor(model => model.LastName, new { id = "LName", @class = "wide" })
+                                </div>
+                                <div class="tbox">
+                                    <label for="Emailreg">Email&nbsp;</label>
+                                    @Html.TextBoxFor(model => model.Email, new { id = "Emailreg", @class = "wide" })
+                                </div>
+                                <div class="tbox">
+                                    <label for="Passwordreg">Password&nbsp;</label>
+                                    @Html.TextBoxFor(model => model.Password, new {id = "Passwordreg", @class = "wide",  @type = "password"})
+                                </div>
+                                <div class="tbox">
+                                    <label for="CPasswordreg">Confirm Password&nbsp;</label>
+                                    @Html.TextBoxFor(model => model.ConfirmPassword, new { id = "CPasswordreg", @class = "wide", @type = "password" })
+                                </div>
+                                <div class="tbox Role">
+                                    <label>I am a...&nbsp;</label>
+                                    @Html.DropDownListFor(model => model.SuggestedRole, new SelectList(
+                                        new List<Object>
+                                        {
+                                            new {value = "Student", text = "Student"},
+                                            new {value = "Parent", text = "Parent"},
+                                            new {value = "Teacher", text = "Teacher"},
+
+                                        },
+                                        "value",
+                                        "text",
+                                        2))
+                                </div>
+                                <div class="tbox Gradelevel">
+                                    <label>Grade Level&nbsp;</label>
+                                    @Html.DropDownListFor(model => model.GradeLevelId, Model.GradeLevelList, "N/A")
+                                </div>
+                                <div class="tbox RegButton">
+                                    <button class="button search-btn">Register</button>
+                                </div>
+                            </fieldset>
+                        }
+    </div>
+</div>

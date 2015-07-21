@@ -1,0 +1,29 @@
+<Html>
+<Body>
+	<script>
+	var myStyle = 8
+	var dateStyle = 2
+	function canHazTable(myStyle, dateStyle){
+		if ((myStyle >= 8 && dateStyle > 2) || (myStyle > 2 && dateStyle >= 8)){
+			canHasTable = 2;
+		}
+		else if ( myStyle <= 2 || dateStyle <= 2){
+		canHasTable = 0;
+		}	
+		else {
+		canHasTable = 1;
+		}
+		return canHasTable;  
+	}	
+		 console.log(canHazTable(myStyle,dateStyle))
+	
+	
+	/*if 
+		
+	else if (canHasTable = 1)
+		(canHasTable = 2)
+	else */
+		
+	</script>
+</Body>
+</Html>

@@ -1,0 +1,106 @@
+﻿@using System.IdentityModel.Configuration
+@using System.Web.UI.WebControls
+@model SWC_LMS.Models.LmsUserViewRegistration
+@{
+    ViewBag.Title = "EditUser";
+    var gradeLvl = ViewBag.ListOfGrades;
+    var gradeId = ViewBag.ThisGradeId;
+    var roles = new List<CheckBox>(){
+      new CheckBox() {
+          Text = "Admin",
+          Checked = true 
+      },
+            new CheckBox() {
+          Text = "Teacher",
+          Checked = true 
+      },
+            new CheckBox() {
+          Text = "Student",
+          Checked = true 
+      },
+            new CheckBox() {
+          Text = "Parent",
+          Checked = true 
+      }
+    };
+ 
+}
+<style>
+    fieldset.scheduler-border {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 2em 1.5em -2em !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+</style>
+
+<div class="container" style="margin-left: -1px; padding-right: 20px">
+    <h2 style="padding-left: 65px">User details</h2>
+    @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post, new {user= Model}))
+    {
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            </div>
+            <div class="col-xs-2 col-sm-4 col-md-4 col-lg-4">
+                <fieldset class="scheduler-border">
+                    <div>
+                            @Html.HiddenFor(m => m.Email)
+                            @Html.HiddenFor(m => m.UserId)
+                            @Html.HiddenFor(m => m.GuidId)
+                        <br/>
+                        <label>Last Name</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.LastName, new {style = "width: 275px"})
+                        </div>
+                        <br/>
+                    </div>
+                    <div>
+                        <label>First Name</label>
+                        <div>
+                            @Html.TextBoxFor(m => m.FirstName, new { style = "width: 275px" })
+                        </div>
+                        <br />
+                    </div>
+                    <div>
+                        <label>Grade Level</label>
+                        <div class="hidden">
+
+                        </div>
+                        <div>
+                            @Html.DropDownListFor(m => m.GradeLevelId, Model.GradeLevelList, new {style = "width: 275px; height: 28px"})
+                        </div>
+                        <br/>
+                    </div>
+                    <div>
+                        <label>Roles</label>
+                        <div>
+                            @Html.CheckBoxFor(m =>m.AdminRole)
+                            <label>Admin</label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(m => m.TeacherRole)
+                            <label>Teacher</label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(m => m.StudentRole)
+                            <label>Student</label>
+                        </div>
+                        <div>
+                            @Html.CheckBoxFor(m => m.ParentRole)
+                            <label>Parent</label>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        @Html.ActionLink("cancel", "AdminDashboard", "Admin")
+                        &nbsp;
+                        <button type="submit">Save</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    }
+</div>

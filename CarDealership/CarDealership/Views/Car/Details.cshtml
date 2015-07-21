@@ -1,0 +1,34 @@
+﻿@model CarDealership.Models.Car
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@Model.Title</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" alt="A car" class="car-image"/>
+        </div>
+        <div class="col-md-8">
+            <div>
+                @Model.Description
+            </div>
+            <h1>ONLY @string.Format("{0:C}", Model.Price)</h1>
+        </div>
+        <div>
+            <h3>@Html.ActionLink("Edit this car", "Edit", "Car", new {id = Model.Id}, null)</h3>
+            @using (Html.BeginForm("Edit", "Car", new {id = Model.Id}))
+            {
+                <button>Edit This Car</button>
+            }
+        </div>
+        <p></p>
+        <div>
+            @using (Html.BeginForm("Delete", "Car", new {id = Model.Id}))
+            {
+                <button>Delete This Car</button>
+            }
+        </div>
+    </div>
+</div>

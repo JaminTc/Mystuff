@@ -1,0 +1,5 @@
+OrderNumber, CustomerName, State, TaxRate, ProductType, Area, CostPerSquareFoot,LaborCostPerSquareFoot, MaterialCost, LaborCost, Tax, Total
+1,Wise,OH,6.25,Wood,100.00,5.15,4.75,515.0000,475.0000,61.87500000,1051.87500000
+2,Jose,OH,6.25,Carpet,150.00,2.25,2.10,337.50,315.00,40.78,692.78
+4,Krup,OH,6.25,Tile,120.00,3.50,4.15,420.00,498.00,57.38,1375.38
+5,Alex,OH,6.25,Carpet,170.00,5.15,4.75,875.50,807.50,105.19,1788.19

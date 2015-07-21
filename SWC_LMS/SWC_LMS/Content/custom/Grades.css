@@ -1,0 +1,54 @@
+﻿
+
+     .fieldsetGrades {
+         margin: 10px 30px 10px 0;
+         padding: 5px;
+         border: 2px solid black;
+         width: 9em;
+         height: 6em;
+     }
+
+    table {
+        margin: 10px 20px 20px 0;
+    }
+
+    .classbox {
+        border: 1px solid black;
+    }
+
+    .classbox td {
+        width: 30em;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .cellLeftAssignment {
+        margin-left: 5px;
+        float: left;
+        width: 2em;
+    }
+
+    .cellRightAssignment {
+        margin-right: 5px;
+        text-align: right;
+        float: right;
+        width: 2em;
+    }
+
+    .AssignmentInfo {
+        font-size: medium;
+        font-weight: bold;
+        margin-top: 7px;
+    }
+
+    .alignleft {
+        float: left;
+    }
+
+    .alignright {
+        padding-right: 55px;
+        float: right;
+    }
+    .assignmentName {
+        text-align: center;
+        font-weight:bold
+    }

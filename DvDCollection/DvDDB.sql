@@ -1,0 +1,32 @@
+CREATE DATABASE DvDDB
+GO
+
+CREATE TABLE Movies(
+	MovieId INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	Title VARCHAR(200),
+	Rating VARCHAR(2),
+	[Year] INT, 
+	Runtime INT,
+	Director INT
+);
+GO
+CREATE TABLE Actors(
+	ActorId INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	FirstName VARCHAR(200),
+	LastName VARCHAR(200),
+);
+GO
+CREATE TABLE MovieActors(
+	MovieID INT NOT NULL,
+	ActorID INT NOT NULL,
+	CONSTRAINT PK_MovieActors PRIMARY KEY(MovieID, ActorID)
+)
+GO
+ALTER TABLE MovieActors
+	ADD CONSTRAINT FK_MovieActors_Movies FOREIGN KEY (MovieID)
+	REFERENCES Movies(MovieID)
+GO
+ALTER TABLE MovieActors
+	ADD CONSTRAINT FK_MovieActors_Actors FOREIGN KEY (ActorID)
+	REFERENCES Actors(ActorID)
+GO

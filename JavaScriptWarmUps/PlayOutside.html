@@ -1,0 +1,17 @@
+<Html>
+<Body>
+	<script>
+	var Temp = 92
+	var isSummer = true
+	function playOutside(Temp,isSummer){
+	if (!isSummer && (Temp >= 60 && Temp <=90) || isSummer && (Temp >= 60 && Temp <=100))
+		    playing = true;
+	else 
+			playing = false;
+		return playing;
+	}
+	
+			console.log(playOutside(Temp,isSummer))
+	</script>
+</Body>
+</Html>

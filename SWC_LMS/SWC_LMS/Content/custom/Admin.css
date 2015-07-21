@@ -1,0 +1,45 @@
+﻿
+    .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+        background: #d3d3d3
+    }
+     .table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+        background: #ffffff
+    }
+    .UserTable {
+        width: 100%;
+        border-collapse: collapse;
+        border-top: black 2px solid
+    }
+    .UserTable td {
+        padding-left: 7px;
+        border: #000000 2px solid;
+    }
+    .UserTable tbody tr {
+        height: 40px;
+
+    }
+    .table thead tr td {
+        padding: 1px;
+        background: #a9a9a9
+    }
+    .boxed {
+        height: 50px;
+        margin: 20px;
+        Border: 1px solid black
+    }
+    .search {
+        margin-top: 10px
+    }
+    .wide {
+        width: 125px
+    }
+    .button {
+        position: absolute;
+        right: 10px;
+  }
+    #Role {
+        height: 26px;
+        margin-left: 50px
+    }
+
+

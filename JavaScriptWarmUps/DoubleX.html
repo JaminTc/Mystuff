@@ -1,0 +1,18 @@
+<Html>
+<Body>
+	<script>
+	var str = "axzxxbb"
+	function DoubleX(str){
+		for (i = 0; i < str.length -2; i++){
+			if(str.substr(i,1) === "x" && str.substr(i+1,1) !== "x")
+				return false;
+			if(str.substr(i,1) === "x" && str.substr(i+1,1) === "x")
+				return true;
+		}
+		return false
+	}
+	
+	console.log(DoubleX(str))
+	</script>
+</Body>
+</Html>

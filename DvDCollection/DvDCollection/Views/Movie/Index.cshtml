@@ -1,0 +1,85 @@
+﻿@model List<DvDCollection.Movy>
+@{
+    ViewBag.Title = "Index";
+   
+}
+<style>
+    fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 2em 1.5em -2em !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width:auto;
+    padding: 2px;
+    border-bottom:none;
+}
+</style>
+<h2>DVD Collection</h2>
+<div class="container">
+    <div class="col-md-10">
+        <fieldset class="scheduler-border" style="margin-left: -1em">
+            <legend class="scheduler-border">Search</legend>
+            <form class="form-inline">
+                <label for="title">Title</label>
+                <div class="form-group" style="margin-right:1em">
+                    <input type="text" class="form-control" id="title" />
+                </div>
+                <label for="director">Director</label>
+                <div class="form-group" style="margin-right:1em">
+                    <input type="text" class="form-control" id="director" />
+                </div>
+                <label for="actor">Actor</label>
+                <div class="form-group" style="margin-right:1em">
+                    <input type="text" class="form-control" id="actor" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Search</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+
+    <div class="col-md-10" >
+        <table class="table table-bordered" style="margin-left: -2em">
+            <tr>
+                <td class="col-md-5">
+                    title
+                </td>
+                <td class="col-md-3">
+                    director
+                </td>
+                <td class="col-md-2">
+                    Year
+                </td>
+                <td class="col-td-1">
+                    e
+                </td>
+            </tr>
+            @foreach (var movie in Model)
+            {
+                <td class="hidden">
+                    @movie.MovieID
+                </td>
+                <td>
+                    @movie.Title
+                </td>
+                <td>
+                    @movie.Director
+                </td>
+                <td>
+                    @movie.Year
+                </td>
+                <td>
+                    <button>edit</button>
+                </td>
+            }
+        </table>
+    </div>
+</div>

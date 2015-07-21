@@ -1,0 +1,16 @@
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\Data\Orders_06012013.txt
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\Data\Products.txt
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\Data\Taxes.txt
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Tests.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Tests.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Data.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Models.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Operations.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\nunit.framework.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Data.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Models.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\FlooringProgram.Operations.pdb
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\bin\Debug\nunit.framework.xml
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\obj\Debug\FlooringProgram.Tests.csprojResolveAssemblyReference.cache
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\obj\Debug\FlooringProgram.Tests.dll
+C:\Users\CodeCamp\Desktop\Concordia_May_2015\Labs\Mastery\FlooringProgram\FlooringProgram.Tests\obj\Debug\FlooringProgram.Tests.pdb

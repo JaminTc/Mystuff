@@ -1,0 +1,14 @@
+﻿body {
+    margin: 0 0 50px;
+}
+
+footer {
+    background-color: #f5fffa;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+    z-index: 150;
+}

@@ -1,0 +1,40 @@
+﻿@model List<GetCoursesForStudent_Result>
+@{
+    ViewBag.Title = "StudentDashboard";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/TechRentStudDash.css")">
+}
+
+<h3>StudentDashboard</h3>
+
+<div>
+    <p>My Classes</p>
+</div>
+<div>
+    <fieldset class="fieldset">
+
+        <div style="clear: both;"></div>
+        <table>
+            @foreach (var x in Model)
+            {
+                <tr class=" classbox">
+                    <td>
+                        <div class="cellLeft">@x.CourseName</div>
+                        <div class="cellCenter">@x.CurrentGrade</div>
+@using (Html.BeginForm("Grades", "ParentAndStudent", FormMethod.Post, new{@class="cellRight"}))
+{
+    @Html.Hidden("CourseName",@x.CourseName)
+    @Html.Hidden("RosterId",@x.RosterId)
+    <button>View Grades</button>
+}
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+</div>
+
+

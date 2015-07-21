@@ -1,0 +1,65 @@
+﻿@model List<GetAssignmentGrades_Result>
+@{
+    ViewBag.Title = "Grades";
+    string courseName = ViewBag.CourseName;
+}
+
+<h3>@courseName - Grades</h3>
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/Grades.css")">
+}
+
+<div class="row">
+    @for (int i = 0; i < Model.Count();i=i+4)
+    {
+        var gradebox = Model.ElementAt(i);
+        <fieldset class="col-md-3 fieldsetGrades">
+            <div class="assignmentName">@gradebox.AssignmentName</div>
+            <div class="AssignmentInfo">
+                <div class="cellLeftAssignment">@String.Format("{0:n0}", gradebox.Percentage)%</div>
+                <div class="cellRightAssignment">@gradebox.Grade</div>
+            </div>
+        </fieldset>
+        if ((i + 1) < Model.Count())
+        {
+            gradebox = Model.ElementAt(i+1);
+            <fieldset class="col-md-3 fieldsetGrades">
+                <div class="assignmentName">@gradebox.AssignmentName</div>
+                <div class="AssignmentInfo">
+                    <div class="cellLeftAssignment">@String.Format("{0:n0}", gradebox.Percentage)%</div>
+                    <div class="cellRightAssignment">@gradebox.Grade</div>
+                </div>
+            </fieldset>
+        }
+        if ((i + 2) < Model.Count())
+        {
+            gradebox = Model.ElementAt(i + 2);
+            <fieldset class="col-md-3 fieldsetGrades">
+                <div class="assignmentName">@gradebox.AssignmentName</div>
+                <div class="AssignmentInfo">
+                    <div class="cellLeftAssignment">@String.Format("{0:n0}", gradebox.Percentage)%</div>
+                    <div class="cellRightAssignment">@gradebox.Grade</div>
+                </div>
+            </fieldset>
+        }
+        if ((i + 3) < Model.Count())
+        {
+            gradebox = Model.ElementAt(i + 3);
+            <fieldset class="col-md-3 fieldsetGrades">
+                <div class="assignmentName">@gradebox.AssignmentName</div>
+                <div class="AssignmentInfo">
+                    <div class="cellLeftAssignment">@String.Format("{0:n0}", gradebox.Percentage)%</div>
+                    <div class="cellRightAssignment">@gradebox.Grade</div>
+                </div>
+            </fieldset>
+        }
+    }
+</div>
+
+
+
+
+
+

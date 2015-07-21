@@ -1,0 +1,47 @@
+﻿@model List<GetTeachersCourseInfo_Result>
+@{
+    ViewBag.Title = "TeacherDashboard";
+    int teacherid = ViewBag.teacherId;
+    var currentClassCount = Model.Count(x => x.IsArchived == false);
+    var archivedClassCount = Model.Count(x => x.IsArchived);
+    var currentClasses = from current in Model
+                         where current.IsArchived == false
+                         select new {current.CourseName, current.CourseId, current.Students};
+}
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/TechRentStudDash.css")">
+}
+
+<h3>TeacherDashboard</h3>
+<div>
+    <p>My Classes</p>
+</div>
+<div>
+    <fieldset class="fieldset">
+        <div>
+            <button class="alignleft" onclick="location.href = '@Url.Action("LogIn", "User")';return false;">LogIn Class</button>
+            <p class="alignright">Current (@currentClassCount) -<span id="archived" data-teacherid="@teacherid"> Archived (@archivedClassCount)</span></p>
+        </div>
+        <div style="clear: both;"></div>
+        <table>
+            @foreach (var x in currentClasses)
+            {
+                <tr class="classbox Course" data-courseid="@x.CourseId">
+                    <td>
+                        <div class="cellLeft">@x.CourseName</div>
+                        <div class="cellRight">@x.Students&nbsp;students</div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/TeacherDashboard.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+}
+
+

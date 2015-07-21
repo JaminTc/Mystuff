@@ -1,0 +1,20 @@
+<html>
+<body>
+<div>
+	<input id = "info" type = "text"/>
+	<button id ="btnShowValue">Rotate 2 Right</button>
+</div>
+<script src ="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type = "text/javascript">
+	$(function(){
+		$('#btnShowValue').click(function(){
+		var str = $('#info').val();
+		var str1 = str.substr((str.length-2),2);
+		var str2 = str.substring(0,(str.length-2));
+		var str3 = str1+str2;
+		alert(str3);
+		})
+	});
+</script>
+</body>
+</html>

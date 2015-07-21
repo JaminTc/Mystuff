@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+		<style type="text/css">
+			.form-group label {
+				width: 100px;
+				text-align: right;
+				display: inline-block;
+			}
+
+			.form-group input {
+				background-color: #67f5fc;
+				width: auto;
+				display: inline-block;
+			}
+			.form-control:focus {
+				border-color: #77ccdd;
+				background-color: #dfea88;
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+		  <div class= "container"  style = "background-color: #ffab3d">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">Company</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+				<li><a href="C:\Users\CodeCamp\Desktop\git\JavaScriptWarmUps\BootstrapLayout1.html">Home</a></li>
+				<li class="active"><a href="C:\Users\CodeCamp\Desktop\git\JavaScriptWarmUps\Forms.html">Forms<span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Contact</a></li>
+			</div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class= "container">
+			<h2 style = "text-align: center;">Software Craftsmanship Guild</h2>
+			<hr>
+			<div class ="row">
+				<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class ="col-md-offset-5 col-md-7">
+						<h4>Existing Users Log In Here</h4>
+					</div>
+					<div class ="col-md-offset-4 col-md-8">
+						<form class = "form-horizontal">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email<br />address</label>
+								<input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Email">
+							</div><br />
+							<div class="form-group">
+								<label for="exampleInputPassword1">Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							</div><br />
+							<div class="form-group" >
+								<div class ="col-md-offset-2 col-md-10" >
+							<input type="checkbox" class="form-control" id="remember" style="vertical-align: top; height: auto;">
+							<label style = "width: 115;" for = "remember">Remember Me?</label>
+								</div>
+							</div><br />
+							<div class="form-group">
+									<label></label>
+									<button type="submit" class="btn btn-primary">Login</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class = "col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class ="col-md-offset-2 col-md-10">
+						<div class ="col-md-offset-1 col-md-11">
+							<h4>New User? Register Now!</h4>
+						</div>
+						<form class = "form-horizontal">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Email<br /> address</label>
+								<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+							</div><br />
+							<div class="form-group">
+								<label for="exampleInputPassword1">First<br /> Name</label>
+								<input type="text" class="form-control" id="exampleInputPassword1" placeholder="FirstName">
+							</div><br />
+							<div class="form-group">
+								<label for="exampleInputPassword1">Last<br /> Name</label>
+								<input type="text" class="form-control" id="exampleInputPassword1" placeholder="LastName">
+								</div><br />
+							<div class="form-group">
+								<label for="exampleInputPassword1">Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							</div><br />
+							<div class="form-group">
+								<label for="exampleInputPassword1">Confirm<br /> Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							</div><br />
+							<div class="form-group">
+								<!-- <div class ="col-md-offset-2 col-md-10"> -->
+									<label></label>
+									<button type="submit" class="btn btn-primary">Register</button>
+								<!-- </div> -->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

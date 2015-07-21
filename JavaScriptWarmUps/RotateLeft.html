@@ -1,0 +1,41 @@
+<html>
+<body>
+
+
+<script>
+    window.onload= function (){
+        var btn = document.getElementById("resultBtn");
+        btn.onclick = function () {
+            // they clicked the button
+            var aTextBox = document.getElementById("aArray");
+            var a = aTextBox.value;
+			var arr1 = a.split(",")
+			var pos1 = arr1.shift();
+			arr1.push(pos1);
+			
+				 resultText = arr1;
+			
+				
+            
+            var resultDiv = document.getElementById("resultDiv");
+
+            var textNode = document.createTextNode(resultText);
+            resultDiv.appendChild(textNode);
+        };
+    }
+</script>
+
+<div>
+    A Text: <input type="text" id="aArray"/>
+</div>
+
+<div>
+    <button id="resultBtn">Click For Result</button>
+</div>
+<hr />
+<div id="resultDiv">
+    
+</div>
+
+</body>
+</html>

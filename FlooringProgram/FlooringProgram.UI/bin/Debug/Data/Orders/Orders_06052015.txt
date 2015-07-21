@@ -1,0 +1,4 @@
+OrderNumber, CustomerName, State, TaxRate, ProductType, Area, CostPerSquareFoot,LaborCostPerSquareFoot, MaterialCost, LaborCost, Tax, Total
+1,Jamin,MI,5.75,Wood,300,5.15,4.75,1545.00,1425.00,170.775000,3140.775000
+2,Nick,MI,5.75,Tile,250,3.50,4.15,7000.00,8300.00,879.750000,16179.750000
+3,Jam,OH,6.25,Tile,200,3.50,4.15,700.00,830.00,95.625000,1625.625000

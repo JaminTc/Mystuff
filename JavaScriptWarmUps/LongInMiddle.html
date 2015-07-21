@@ -1,0 +1,22 @@
+<html>
+<body>
+<div>
+	<input id ="mid" type = "text"/>
+	<input id ="long" type = "text"/>
+	<button id = "btnShowValue">Long In the Middle</button>
+</div>
+<script = src ="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type = "text/javascript">
+	$(function (){
+		$('#btnShowValue').click(function(){
+		var str1 = $('#mid').val();
+		var str2 = $('#long').val();
+		if(str1.length > str2.length)
+			alert(str2+str1+str2);
+		if(str1.length < str2.length)
+			alert(str1+str2+str1);
+		});
+	});
+</script>
+</body>
+</html>

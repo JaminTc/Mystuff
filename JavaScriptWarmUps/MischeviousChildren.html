@@ -1,0 +1,17 @@
+<Html>
+<Body>
+	<script>
+	var aSmile = true
+	var bSmile = true
+	function areWeInTrouble(aSmile,bSmile){
+		if (aSmile && !bSmile || !aSmile && bSmile)
+			trouble = false;
+		else 
+			trouble = true;
+		return trouble;
+	}
+	
+		 console.log(areWeInTrouble(aSmile,bSmile))
+	</script>
+</Body>
+</Html>

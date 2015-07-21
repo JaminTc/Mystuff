@@ -1,0 +1,25 @@
+﻿@model List<SWC_LMS.Models.Views.GradeBookViewModel>
+@{
+    ViewBag.Title = "GradeBook";
+}
+
+<h2>GradeBook</h2>
+
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Grades</td>
+        <td>
+            @foreach (var n in Model)
+            {
+                foreach (var m in n.Assignments)
+                {
+                    @m.AssignmentName
+                }
+            }
+        </td>
+    </tr>
+    </thead>
+</table>

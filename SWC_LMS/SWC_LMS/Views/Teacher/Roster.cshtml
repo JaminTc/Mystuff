@@ -1,0 +1,115 @@
+﻿@model List<SWC_LMS.Models.Views.RosterViewModel>
+@{
+    ViewBag.Title = "Roster";
+    int courseId = ViewBag.courseId;
+    int counter = 1;
+}
+
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/Roster.css")">
+}
+
+<h3>Roster</h3>
+<div>
+    @Html.ActionLink("Information", "GetThisCourse", "Teacher", new { id = @courseId}, new {style = "text-decoration-underline: 1px"})
+    <span>|</span>
+    @Html.ActionLink("Roster", "roster", "Teacher", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+    <span>|</span>
+    @Html.ActionLink("Gradebook", "gradebook", "Teacher", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+</div>
+
+
+    <div class="col-md-6 RosterSide">
+        <p>Roster</p>
+        <table class="table table-striped RosterTable">
+            <thead>
+                <tr style="background: #a9a9a9">
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody id="displaybody">
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td class="FirstName"> @user.FirstName</td>
+                        <td class="LastName"> @user.LastName</td>
+                        <td class="Email">@user.Email</td>
+                        <td align="center"><span class="glyphicon glyphicon-trash Delete" data-studentid="@user.StudentId" data-courseid="@courseId" aria-hidden="true"></span></td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <fieldset class="scheduler-border col-md-5">
+        <div class="search user row" id ="user-Form">
+            <div class="col-md-6">
+                <label>Last Name</label>
+                <div>
+                    @Html.TextBox("LastName", "", new { id = "lastName", @class = "wide", name="lastName", style = "width: 220px; border: solid black 2px" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label style="padding-left: 20px">Grade Level</label>
+                <div style="padding-left: 20px">
+                    @Html.DropDownList("GradeLevelId", new SelectList(
+                        new List<Object>
+                        {
+                            new {value = "null", text = ""},
+                            new {value = "1", text = "K"},
+                            new {value = "2", text = "1st Grade"},
+                            new {value = "3", text = "2nd Grade"},
+                            new {value = "4", text = "3rd Grade"},
+                            new {value = "5", text = "4th Grade"},
+                            new {value = "6", text = "5th Grade"},
+                            new {value = "7", text = "6th Grade"},
+                            new {value = "8", text = "7th Grade"},
+                            new {value = "9", text = "8th Grade"},
+                            new {value = "10", text = "Freshman"},
+                            new {value = "11", text = "Sophmore"},
+                            new {value = "12", text = "Junior"},
+                            new {value = "13", text = "Senior"}
+                        },
+                        "value",
+                        "text",
+                        2), new {id = "GradeLevelId", name = "GradeLevelId" ,style = "height:25px; border: solid black 2px"})
+                </div>
+            </div>
+            <div class="col-md-1" style="margin-left: 25px; padding-top: 24px">
+                <button class="button search-btn" data-courseid="@courseId">Search</button>
+            </div>
+        </div> 
+        <br/>
+        <p>Results</p>
+        <hr/>
+        <br/>
+        <table class="table table-striped UserTable">
+            <thead>
+            <tr style="background: #a9a9a9">
+                <td class="col-md-2">Last Name</td>
+                <td class="col-md-2">First Name</td>
+                <td class="col-md-2">Grade</td>
+                <td class="col-md-2"></td>
+            </tr>
+            </thead>
+            <tbody id="displaySearch"></tbody>
+        </table>
+    </fieldset>
+
+
+@section scripts {
+    <script src="~/Scripts/app/DeleteFromRoster.js"></script>
+    <script src="~/Scripts/app/AddToRoster.js"></script>
+    <script src="~/Scripts/app/SearchRoster.js"></script>
+    <script src="~/Scripts/app/TeacherScripts.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+}
+
+
+        
+   

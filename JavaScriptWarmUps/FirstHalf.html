@@ -1,0 +1,18 @@
+<html>
+<body>
+<div>
+<input id = "info" type="text"/>
+<button id = "btnshowValue">Get First Half of string</button>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#btnshowValue').click(function(){
+		var str = $('#info').val();
+		var half = str.substr(0,(str.length/2))
+		alert(half);
+		});
+	});
+</script>
+</body>
+</html>
