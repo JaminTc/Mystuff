@@ -83,14 +83,14 @@
                                 {
                                     @Html.AntiForgeryToken()
                                     <fieldset class="fieldsetRegister">
-                                <div class=" tbox">
-                                        <label for="FName">First Name&nbsp;</label>
-                                        @Html.TextBoxFor(model => model.FirstName, new { id = "FName", @class = "wide" })
-                                </div>
-                                <div class="tbox">
-                                    <label for="LName">Last Name&nbsp;</label>
-                                    @Html.TextBoxFor(model => model.LastName, new { id = "LName", @class = "wide" })
-                                </div>
+                                        <div class=" tbox">
+                                            <label for="FName">First Name&nbsp;</label> 
+                                            @Html.TextBoxFor(model => model.FirstName, new {id = "FName", @class = "wide"})
+                                        </div>
+                                        <div class="tbox">
+                                            <label for="LName">Last Name&nbsp;</label>
+                                            @Html.TextBoxFor(model => model.LastName, new {id = "LName", @class = "wide"})
+                                        </div>
                                 <div class="tbox">
                                     <label for="Emailreg">Email&nbsp;</label>
                                     @Html.TextBoxFor(model => model.Email, new { id = "Emailreg", @class = "wide" })

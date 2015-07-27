@@ -20,7 +20,7 @@
 <div class="container col-md-12">
     <h2>@Model.CourseName</h2>
     <div>
-        @Html.ActionLink("Information", "GetThisCourse", "teacher", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+        @Html.ActionLink("Information", "GetThisCourse", "teacher", new { id = @courseId }, new { style = "text-decoration:underline;  1px" })
         <span>|</span>
         @Html.ActionLink("Roster", "roster", "teacher", new { id = @courseId }, new { id = Model.CourseId, style = "text-decoration-underline: 1px" })
         <span>|</span>

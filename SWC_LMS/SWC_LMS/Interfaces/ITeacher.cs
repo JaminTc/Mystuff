@@ -13,7 +13,7 @@ namespace SWC_LMS.Repositories
         List<GetTeachersCourseInfo_Result> GetTeachersCourseInfo(int id);
         Course ThisCourseInfo(int id);
         List<Subject> GetAllSubjects();
-        void AddNewCourse(Course course);
+        void AddNewCourse(TeacherViewModel course);
         void EditCourse(TeacherViewModel course);
         void AddAssingment(AssignmentViewModel assignment);
         List<GetStudentsInCourse_Result> GetStudentsInCourse(int courseId);

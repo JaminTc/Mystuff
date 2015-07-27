@@ -14,9 +14,9 @@ namespace SWC_LMS.Models
 
         public int UserId { get; set; }
         public string GuidId {get; set; }
-        [Required]
+        [Required(ErrorMessage = "This is a required field")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This is a required field")]
         public string LastName { get; set; }
         public string SuggestedRole { get; set; }
         public int? GradeLevelId { get; set; }

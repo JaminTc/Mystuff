@@ -34,9 +34,12 @@ namespace SWC_LMS.Repositories
             return db.GetAllSubjects().ToList();
         }
 
-        public void AddNewCourse(Course course)
+        public void AddNewCourse(TeacherViewModel course)
         {
-            db.AddNewCourse(course.UserId, course.SubjectId, course.CourseName, course.CourseDescription, course.GradeLevel, course.IsArchived, course.StartDate, course.EndDate);
+            var startDate = DateTime.Parse(course.StartDate);
+            var endDate = DateTime.Parse(course.EndDate);
+            Byte gradeLevel = Convert.ToByte(course.GradeLevel);
+            db.AddNewCourse(course.UserId, course.SubjectId, course.CourseName, course.CourseDescription, gradeLevel, course.IsArchived, startDate, endDate);
         }
 
         public void EditCourse(TeacherViewModel course)
@@ -44,7 +47,7 @@ namespace SWC_LMS.Repositories
             var startDate = DateTime.Parse(course.StartDate);
             var endDate = DateTime.Parse(course.EndDate);
             Byte gradeLevel = Convert.ToByte(course.GradeLevel);
-            db.AlterCourse(course.CourseId, course.UserId, course.SubjectId, course.CourseName, course.CourseDescription,
+            db.AlterCourse(course.CourseId, course.SubjectId, course.CourseName, course.CourseDescription,
                 gradeLevel, course.IsArchived, startDate, endDate);
         }
 
@@ -81,21 +84,23 @@ namespace SWC_LMS.Repositories
 
         public List<GradeBookViewModel> GradeBook(int id)
         {
-            var whatever = from c in db.Courses
+
+            return (from c in db.Courses
                 join r in db.Rosters on c.CourseId equals r.CourseId
                 join u in db.LmsUsers on r.UserId equals u.UserId
                 join a in db.Assignments on c.CourseId equals a.CourseId
-                group r by r.UserId
+                where c.CourseId == id
+                group r by new {r.UserId,u.FirstName,u.LastName,r.CurrentGrade, r.Course,r.RosterId,}
                 into g
-                select g;
-
-            GradeBookViewModel gradeBook = new GradeBookViewModel();
-            List<GradeBookViewModel> gradeBooks = new List<GradeBookViewModel>();
-
-            
-            
-            
-            
+                select new GradeBookViewModel
+                {
+                    FirstName = g.Key.FirstName,
+                    LastName = g.Key.LastName,
+                    UserId = g.Key.UserId,
+                    Grade = g.Key.CurrentGrade,
+                    Assignments = g.FirstOrDefault().RosterAssignments.ToList()
+                }).ToList();
+               
         }
 
     }

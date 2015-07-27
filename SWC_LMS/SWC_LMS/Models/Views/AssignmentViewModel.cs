@@ -18,6 +18,7 @@ namespace SWC_LMS.Models.Views
         public int PossiblePoints { get; set; }
         public string DueDate { get; set; }
         public string AssignmentDescription { get; set; }
+        public int UserId { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual ICollection<RosterAssignment> RosterAssignments { get; set; }

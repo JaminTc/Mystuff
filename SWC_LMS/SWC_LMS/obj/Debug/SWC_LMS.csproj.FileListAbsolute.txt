@@ -124,3 +124,5 @@ C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\obj\Debug\SWC_LMS.Migrations.Initi
 C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\obj\Debug\SWC_LMS.csproj.GenerateResource.Cache
 C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\obj\Debug\SWC_LMS.dll
 C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\obj\Debug\SWC_LMS.pdb
+C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\bin\MoreLinq.dll
+C:\Users\CodeCamp\Desktop\git\SWC_LMS\SWC_LMS\bin\MoreLinq.xml

@@ -215,15 +215,6 @@ namespace SWC_LMS
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetUserIdByEmail", emailParameter);
         }
     
-        public virtual ObjectResult<GetTeachersCourseInfo_Result> GetTeachersCourseInfo(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeachersCourseInfo_Result>("GetTeachersCourseInfo", userIdParameter);
-        }
-    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
@@ -492,72 +483,6 @@ namespace SWC_LMS
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCoursesForStudent_Result>("GetCoursesForStudent", userIdParameter);
         }
     
-        public virtual int AlterCourse(Nullable<int> courseId, Nullable<int> userId, Nullable<int> subjectId, string courseName, string courseDescription, Nullable<byte> gradeLevel, Nullable<bool> isArchived, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
-        {
-            var courseIdParameter = courseId.HasValue ?
-                new ObjectParameter("CourseId", courseId) :
-                new ObjectParameter("CourseId", typeof(int));
-    
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("UserId", userId) :
-                new ObjectParameter("UserId", typeof(int));
-    
-            var subjectIdParameter = subjectId.HasValue ?
-                new ObjectParameter("SubjectId", subjectId) :
-                new ObjectParameter("SubjectId", typeof(int));
-    
-            var courseNameParameter = courseName != null ?
-                new ObjectParameter("CourseName", courseName) :
-                new ObjectParameter("CourseName", typeof(string));
-    
-            var courseDescriptionParameter = courseDescription != null ?
-                new ObjectParameter("CourseDescription", courseDescription) :
-                new ObjectParameter("CourseDescription", typeof(string));
-    
-            var gradeLevelParameter = gradeLevel.HasValue ?
-                new ObjectParameter("GradeLevel", gradeLevel) :
-                new ObjectParameter("GradeLevel", typeof(byte));
-    
-            var isArchivedParameter = isArchived.HasValue ?
-                new ObjectParameter("IsArchived", isArchived) :
-                new ObjectParameter("IsArchived", typeof(bool));
-    
-            var startDateParameter = startDate.HasValue ?
-                new ObjectParameter("StartDate", startDate) :
-                new ObjectParameter("StartDate", typeof(System.DateTime));
-    
-            var endDateParameter = endDate.HasValue ?
-                new ObjectParameter("EndDate", endDate) :
-                new ObjectParameter("EndDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AlterCourse", courseIdParameter, userIdParameter, subjectIdParameter, courseNameParameter, courseDescriptionParameter, gradeLevelParameter, isArchivedParameter, startDateParameter, endDateParameter);
-        }
-    
-        public virtual int AddNewAssignment(Nullable<int> courseID, string assingmentName, Nullable<int> possiblePoints, Nullable<System.DateTime> dueDate, string assingmentDescription)
-        {
-            var courseIDParameter = courseID.HasValue ?
-                new ObjectParameter("CourseID", courseID) :
-                new ObjectParameter("CourseID", typeof(int));
-    
-            var assingmentNameParameter = assingmentName != null ?
-                new ObjectParameter("AssingmentName", assingmentName) :
-                new ObjectParameter("AssingmentName", typeof(string));
-    
-            var possiblePointsParameter = possiblePoints.HasValue ?
-                new ObjectParameter("PossiblePoints", possiblePoints) :
-                new ObjectParameter("PossiblePoints", typeof(int));
-    
-            var dueDateParameter = dueDate.HasValue ?
-                new ObjectParameter("DueDate", dueDate) :
-                new ObjectParameter("DueDate", typeof(System.DateTime));
-    
-            var assingmentDescriptionParameter = assingmentDescription != null ?
-                new ObjectParameter("AssingmentDescription", assingmentDescription) :
-                new ObjectParameter("AssingmentDescription", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddNewAssignment", courseIDParameter, assingmentNameParameter, possiblePointsParameter, dueDateParameter, assingmentDescriptionParameter);
-        }
-    
         public virtual int UpdateRoster(Nullable<int> studentId, Nullable<int> courseId, Nullable<int> isDeleted)
         {
             var studentIdParameter = studentId.HasValue ?
@@ -590,6 +515,120 @@ namespace SWC_LMS
                 new ObjectParameter("isDeleted", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddToRoster", courseIdParameter, userIdParameter, isDeletedParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> AssignGradePercent(Nullable<int> assignmentId, Nullable<decimal> pointsEarned, Nullable<int> userId)
+        {
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("AssignmentId", assignmentId) :
+                new ObjectParameter("AssignmentId", typeof(int));
+    
+            var pointsEarnedParameter = pointsEarned.HasValue ?
+                new ObjectParameter("PointsEarned", pointsEarned) :
+                new ObjectParameter("PointsEarned", typeof(decimal));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AssignGradePercent", assignmentIdParameter, pointsEarnedParameter, userIdParameter);
+        }
+    
+        public virtual int AddNewAssignment(Nullable<int> courseID, string assingmentName, Nullable<int> possiblePoints, Nullable<System.DateTime> dueDate, string assingmentDescription)
+        {
+            var courseIDParameter = courseID.HasValue ?
+                new ObjectParameter("CourseID", courseID) :
+                new ObjectParameter("CourseID", typeof(int));
+    
+            var assingmentNameParameter = assingmentName != null ?
+                new ObjectParameter("AssingmentName", assingmentName) :
+                new ObjectParameter("AssingmentName", typeof(string));
+    
+            var possiblePointsParameter = possiblePoints.HasValue ?
+                new ObjectParameter("PossiblePoints", possiblePoints) :
+                new ObjectParameter("PossiblePoints", typeof(int));
+    
+            var dueDateParameter = dueDate.HasValue ?
+                new ObjectParameter("DueDate", dueDate) :
+                new ObjectParameter("DueDate", typeof(System.DateTime));
+    
+            var assingmentDescriptionParameter = assingmentDescription != null ?
+                new ObjectParameter("AssingmentDescription", assingmentDescription) :
+                new ObjectParameter("AssingmentDescription", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddNewAssignment", courseIDParameter, assingmentNameParameter, possiblePointsParameter, dueDateParameter, assingmentDescriptionParameter);
+        }
+    
+        public virtual ObjectResult<string> GetThisCurrentGrade(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetThisCurrentGrade", userIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> FindGradePercent(Nullable<int> assignmentId, Nullable<decimal> pointsEarned, Nullable<int> userId)
+        {
+            var assignmentIdParameter = assignmentId.HasValue ?
+                new ObjectParameter("AssignmentId", assignmentId) :
+                new ObjectParameter("AssignmentId", typeof(int));
+    
+            var pointsEarnedParameter = pointsEarned.HasValue ?
+                new ObjectParameter("PointsEarned", pointsEarned) :
+                new ObjectParameter("PointsEarned", typeof(decimal));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("FindGradePercent", assignmentIdParameter, pointsEarnedParameter, userIdParameter);
+        }
+    
+        public virtual ObjectResult<GetTeachersCourseInfo_Result> GetTeachersCourseInfo(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeachersCourseInfo_Result>("GetTeachersCourseInfo", userIdParameter);
+        }
+    
+        public virtual int AlterCourse(Nullable<int> courseId, Nullable<int> subjectId, string courseName, string courseDescription, Nullable<byte> gradeLevel, Nullable<bool> isArchived, Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var courseIdParameter = courseId.HasValue ?
+                new ObjectParameter("CourseId", courseId) :
+                new ObjectParameter("CourseId", typeof(int));
+    
+            var subjectIdParameter = subjectId.HasValue ?
+                new ObjectParameter("SubjectId", subjectId) :
+                new ObjectParameter("SubjectId", typeof(int));
+    
+            var courseNameParameter = courseName != null ?
+                new ObjectParameter("CourseName", courseName) :
+                new ObjectParameter("CourseName", typeof(string));
+    
+            var courseDescriptionParameter = courseDescription != null ?
+                new ObjectParameter("CourseDescription", courseDescription) :
+                new ObjectParameter("CourseDescription", typeof(string));
+    
+            var gradeLevelParameter = gradeLevel.HasValue ?
+                new ObjectParameter("GradeLevel", gradeLevel) :
+                new ObjectParameter("GradeLevel", typeof(byte));
+    
+            var isArchivedParameter = isArchived.HasValue ?
+                new ObjectParameter("IsArchived", isArchived) :
+                new ObjectParameter("IsArchived", typeof(bool));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AlterCourse", courseIdParameter, subjectIdParameter, courseNameParameter, courseDescriptionParameter, gradeLevelParameter, isArchivedParameter, startDateParameter, endDateParameter);
         }
     }
 }

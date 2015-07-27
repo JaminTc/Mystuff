@@ -1,7 +1,91 @@
-﻿@model SWC_LMS.Models.Views.TeacherViewModel
+﻿@using System.Collections.Specialized
+@model SWC_LMS.Models.Views.TeacherViewModel
 @{
-    ViewBag.Title = "AddCourse";
+    ViewBag.Title = "GetThisCourse";
+    <style>
+        fieldset.scheduler-border {
+            border: 2px groove #ddd !important;
+            padding: 0 1.4em 1.4em 1.4em !important;
+            margin: 0 2em 1.5em 0 !important;
+            -webkit-box-shadow: 0px 0px 0px 0px #000;
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+
+        .header {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+        }
+    </style>
 }
+<div class="container col-md-12">
+    <h2>@Model.CourseName</h2>
+    <div class="row col-md-7">
+        <label class="header">Information</label>
+        @using (Html.BeginForm("AddThisCourse", "Teacher", FormMethod.Post))
+        {
+            <fieldset class="scheduler-border">
+                <br/>
 
-<h2>Add Course</h2>
-
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <label size="14">Class Name</label>
+                        @Html.TextBoxFor(m => m.CourseName, new {style = "width: 200px"})
+                    </div>
+                    <div class="col-md-4">
+                        <label>Grade Level</label>
+                        @Html.DropDownListFor(m => m.GradeLevel, Model.GradeLevelList, new {style = "height: 27px"})
+                    </div>
+                    <div class="col-md-2">
+                        <label>Archive</label>
+                        @Html.CheckBoxFor(m => m.IsArchived)
+                    </div>
+                </div>
+                <br/>
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <label>Subject</label>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.SubjectId, Model.SubjectList, new {style = "height: 27px; width: 200px"})
+                        </div>
+                        <label>Start Date</label>
+                        <div class="form-group">
+                            <div>
+                                @Html.EditorFor(m => m.StartDate, new {htmlAttributes = new {@class = "datepicker", style = "width:75px"}})
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                        </div>
+                        <label>End Date</label>
+                        <div class="form-group">
+                            <div>
+                                @Html.EditorFor(m => m.EndDate, new {htmlAttributes = new {@class = "datepicker", style = "width:75px"}})
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label>Description</label>
+                        @Html.TextAreaFor(m => m.CourseDescription, new {style = "height: 200px; width: 250px"})
+                    </div>
+                </div>
+                <br/>
+                @Html.HiddenFor(m => m.CourseId)
+                @Html.HiddenFor(m => m.UserId)
+                <br/>
+                <div class="row">
+                    <div class="col-md-9"></div>
+                    <div class="row col-md-3">
+                        <div>
+                            @Html.ActionLink("cancel", "TeacherDashboard", "Teacher", new {id = Model.UserId}, null)
+                            <span>&nbsp;</span>
+                            <button type="submit" class="btn-default" style="text-align: right">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Scripts/app/TeacherScripts.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+}

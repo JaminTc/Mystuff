@@ -391,9 +391,6 @@
     <FunctionImport Name="GetUserIdByEmail" ReturnType="Collection(Int32)">
       <Parameter Name="Email" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="GetTeachersCourseInfo" ReturnType="Collection(SWC_LMSModel.GetTeachersCourseInfo_Result)">
-      <Parameter Name="UserId" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -469,24 +466,6 @@
     <FunctionImport Name="GetCoursesForStudent" ReturnType="Collection(SWC_LMSModel.GetCoursesForStudent_Result)">
       <Parameter Name="UserId" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="AlterCourse">
-      <Parameter Name="CourseId" Mode="In" Type="Int32" />
-      <Parameter Name="UserId" Mode="In" Type="Int32" />
-      <Parameter Name="SubjectId" Mode="In" Type="Int32" />
-      <Parameter Name="CourseName" Mode="In" Type="String" />
-      <Parameter Name="CourseDescription" Mode="In" Type="String" />
-      <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
-      <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
-      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
-      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="AddNewAssignment">
-      <Parameter Name="CourseID" Mode="In" Type="Int32" />
-      <Parameter Name="AssingmentName" Mode="In" Type="String" />
-      <Parameter Name="PossiblePoints" Mode="In" Type="Int32" />
-      <Parameter Name="DueDate" Mode="In" Type="DateTime" />
-      <Parameter Name="AssingmentDescription" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="UpdateRoster">
       <Parameter Name="StudentId" Mode="In" Type="Int32" />
       <Parameter Name="CourseId" Mode="In" Type="Int32" />
@@ -496,6 +475,39 @@
       <Parameter Name="courseId" Mode="In" Type="Int32" />
       <Parameter Name="userId" Mode="In" Type="Int32" />
       <Parameter Name="isDeleted" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AssignGradePercent" ReturnType="Collection(Decimal)">
+      <Parameter Name="AssignmentId" Mode="In" Type="Int32" />
+      <Parameter Name="PointsEarned" Mode="In" Type="Decimal" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddNewAssignment">
+      <Parameter Name="CourseID" Mode="In" Type="Int32" />
+      <Parameter Name="AssingmentName" Mode="In" Type="String" />
+      <Parameter Name="PossiblePoints" Mode="In" Type="Int32" />
+      <Parameter Name="DueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="AssingmentDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetThisCurrentGrade" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="FindGradePercent" ReturnType="Collection(Decimal)">
+      <Parameter Name="AssignmentId" Mode="In" Type="Int32" />
+      <Parameter Name="PointsEarned" Mode="In" Type="Decimal" />
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetTeachersCourseInfo" ReturnType="Collection(SWC_LMSModel.GetTeachersCourseInfo_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AlterCourse">
+      <Parameter Name="CourseId" Mode="In" Type="Int32" />
+      <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+      <Parameter Name="CourseName" Mode="In" Type="String" />
+      <Parameter Name="CourseDescription" Mode="In" Type="String" />
+      <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
+      <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetAssignmentGrades_Result">
@@ -637,5 +649,17 @@
     <Property Type="Int32" Name="RosterId" Nullable="false" />
     <Property Type="Int32" Name="CourseId" Nullable="false" />
     <Property Type="String" Name="CurrentGrade" Nullable="true" MaxLength="3" />
+  </ComplexType>
+  <ComplexType Name="GetTeachersCourseInfo_Result1">
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Students" Nullable="true" />
+    <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetTeachersCourseInfo_Result2">
+    <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Students" Nullable="true" />
+    <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+    <Property Type="Int32" Name="CourseId" Nullable="false" />
   </ComplexType>
 </Schema>

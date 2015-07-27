@@ -21,7 +21,7 @@
 <div>
     <fieldset class="fieldset">
         <div>
-            <button class="alignleft" onclick="location.href = '@Url.Action("LogIn", "User")';return false;">LogIn Class</button>
+            <button class="alignleft" onclick="location.href = '@Url.Action("Addcourse", new{id = teacherid})';return false;">Add Class</button>
             <p class="alignright">Current (@currentClassCount) -<span id="archived" data-teacherid="@teacherid"> Archived (@archivedClassCount)</span></p>
         </div>
         <div style="clear: both;"></div>

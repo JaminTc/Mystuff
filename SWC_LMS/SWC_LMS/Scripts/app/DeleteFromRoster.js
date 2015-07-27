@@ -26,3 +26,6 @@ function DoDelete(){
         });
 };
 $(document).ready(deleteRegistration());
+
+
+

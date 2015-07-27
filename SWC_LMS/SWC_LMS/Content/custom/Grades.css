@@ -1,4 +1,23 @@
-﻿
+﻿.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+        background: #d3d3d3
+    }
+     .table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+        background: #ffffff
+    }
+         
+    .RosterTable {
+        width: 40%;
+        border-collapse: collapse;
+        border-top: black 2px solid
+    }
+    .RosterTable td {
+        padding-left: 7px;
+        border: #000000 2px solid;
+    }
+     .table thead tr td {
+        padding: 1px;
+        background: #a9a9a9
+    }
 
      .fieldsetGrades {
          margin: 10px 30px 10px 0;
@@ -10,6 +29,7 @@
 
     table {
         margin: 10px 20px 20px 0;
+        
     }
 
     .classbox {
@@ -51,4 +71,19 @@
     .assignmentName {
         text-align: center;
         font-weight:bold
+    }
+    .FirstName {
+        width: 10%;
+    }
+    .LastName {
+        width: 10%;
+    }
+    .Grade {
+        width: 3%;
+    }
+    .homework {
+        width: 5%;
+    }
+    .percentage {
+        width: 5%;
     }

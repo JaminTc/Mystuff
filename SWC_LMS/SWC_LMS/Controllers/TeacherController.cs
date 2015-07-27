@@ -18,6 +18,7 @@ namespace SWC_LMS.Controllers
         {
             var courses = _opp1.GetTeachersCourseInfo(id);
             ViewBag.teacherId = id;
+            ViewBag.teacherString = "Teacher";
             return View(courses);
         }
 
@@ -61,14 +62,18 @@ namespace SWC_LMS.Controllers
         [HttpPost]
         public ActionResult EditCourse(TeacherViewModel course)
         {
+            var id = course.UserId;
             _opp1.EditCourse(course);
-            return View("GetThisCourse", course);
+            return RedirectToAction("TeacherDashboard", new{id});
         }
 
-        public ActionResult AddCourse()
+        public ActionResult AddCourse(int id)
         {
             List<GradeLevel> gradeList = _opp2.GetAllGrades();
             List<Subject> subjects = _opp1.GetAllSubjects();
+            DateTime Date = new DateTime();
+            var startDate = Date.ToShortDateString();
+            var endDate = Date.ToShortDateString();
             var course = new TeacherViewModel()
             {
                 GradeLevelList = gradeList.Select(x => new System.Web.Mvc.SelectListItem()
@@ -82,7 +87,19 @@ namespace SWC_LMS.Controllers
                     Text = x.SubjectName.ToString()
                 })
             };
-            return View("GetThisCourse", course);   
+            course.StartDate = startDate;
+            course.EndDate = endDate;
+            course.UserId = id;
+            ViewBag.TeacherId = course.UserId;
+            return View("AddCourse", course);   
+        }
+
+        [HttpPost]
+        public ActionResult AddThisCourse(TeacherViewModel course)
+        {
+            var id = course.UserId;
+            _opp1.AddNewCourse(course);
+            return RedirectToAction("TeacherDashboard", new {id});
         }
 
         public ActionResult AddAssingment(int id)
@@ -101,9 +118,10 @@ namespace SWC_LMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewAssingment(AssignmentViewModel assignment, int id)
+        public ActionResult AddNewAssingment(AssignmentViewModel assignment)
         {
             _opp1.AddAssignment(assignment);
+            var id = assignment.UserId;
             var user = _opp1.GetTeachersCourseInfo(id);
 
             return View("TeacherDashboard", user);
@@ -116,9 +134,14 @@ namespace SWC_LMS.Controllers
             return View(roster);
         }
 
-        public ActionResult GradeBook(GradeBookViewModel grades)
+        public ActionResult GradeBook(int id)
         {
-            return View(_oop1.);
+            var course = _opp1.GetThisCourse(id);
+            var courseId = course.CourseId;
+            var courseName = course.CourseName;
+            ViewBag.Course = courseId;
+            ViewBag.CourseName = courseName;
+            return View(_opp1.Gradebook(id));
         }
     }
 }

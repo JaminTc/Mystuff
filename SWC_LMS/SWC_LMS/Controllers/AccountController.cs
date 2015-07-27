@@ -71,10 +71,11 @@ namespace SWC_LMS.Controllers
         public async Task<ActionResult> Login(RegisterViewModel model, string returnUrl)
         {
             UserOperations opp = new UserOperations();
-            
+
+
             //if (!ModelState.IsValid)
             //{
-            //    return RedirectToAction("LogIn","User");
+            //    return RedirectToAction("LogIn", "User");
             //}
 
             // This doesn't count login failures towards account lockout
@@ -163,11 +164,12 @@ namespace SWC_LMS.Controllers
                 model.GuidId = null;
 
                 opp.LogIn(model);
-            //    AddErrors(result);
+                AddErrors(result);
+                return RedirectToAction("Index", "User");
             //}
             
-            // If we got this far, something failed, redisplay form
-            return RedirectToAction("LogIn","User",model);
+            //// If we got this far, something failed, redisplay form
+            //return RedirectToAction("LogIn","User",model);
         }
 
         //

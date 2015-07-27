@@ -322,6 +322,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddNewAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseID" Type="int" Mode="In" />
+          <Parameter Name="AssingmentName" Type="varchar" Mode="In" />
+          <Parameter Name="PossiblePoints" Type="int" Mode="In" />
+          <Parameter Name="DueDate" Type="date" Mode="In" />
+          <Parameter Name="AssingmentDescription" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="AddNewCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="SubjectId" Type="int" Mode="In" />
@@ -337,11 +344,31 @@
           <Parameter Name="userId" Type="int" Mode="In" />
           <Parameter Name="isDeleted" Type="int" Mode="In" />
         </Function>
+        <Function Name="AlterCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseId" Type="int" Mode="In" />
+          <Parameter Name="SubjectId" Type="int" Mode="In" />
+          <Parameter Name="CourseName" Type="varchar" Mode="In" />
+          <Parameter Name="CourseDescription" Type="varchar" Mode="In" />
+          <Parameter Name="GradeLevel" Type="tinyint" Mode="In" />
+          <Parameter Name="IsArchived" Type="bit" Mode="In" />
+          <Parameter Name="StartDate" Type="date" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AssignGradePercent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentId" Type="int" Mode="In" />
+          <Parameter Name="PointsEarned" Type="decimal" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
         <Function Name="AssignUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="nvarchar" Mode="In" />
           <Parameter Name="RoleID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ChildrensInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FindGradePercent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssignmentId" Type="int" Mode="In" />
+          <Parameter Name="PointsEarned" Type="decimal" Mode="In" />
           <Parameter Name="UserId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetAllSubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -371,6 +398,9 @@
         </Function>
         <Function Name="GetThisCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CourseId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetThisCurrentGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
         </Function>
         <Function Name="GetUserIdByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
@@ -895,9 +925,6 @@
           <FunctionImport Name="GetUserIdByEmail" ReturnType="Collection(Int32)">
           <Parameter Name="Email" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetTeachersCourseInfo" ReturnType="Collection(SWC_LMSModel.GetTeachersCourseInfo_Result)">
-          <Parameter Name="UserId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -973,24 +1000,6 @@
           <FunctionImport Name="GetCoursesForStudent" ReturnType="Collection(SWC_LMSModel.GetCoursesForStudent_Result)">
           <Parameter Name="UserId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="AlterCourse">
-            <Parameter Name="CourseId" Mode="In" Type="Int32" />
-            <Parameter Name="UserId" Mode="In" Type="Int32" />
-            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
-            <Parameter Name="CourseName" Mode="In" Type="String" />
-            <Parameter Name="CourseDescription" Mode="In" Type="String" />
-            <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
-            <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
-            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
-            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="AddNewAssignment">
-            <Parameter Name="CourseID" Mode="In" Type="Int32" />
-            <Parameter Name="AssingmentName" Mode="In" Type="String" />
-            <Parameter Name="PossiblePoints" Mode="In" Type="Int32" />
-            <Parameter Name="DueDate" Mode="In" Type="DateTime" />
-            <Parameter Name="AssingmentDescription" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="UpdateRoster">
             <Parameter Name="StudentId" Mode="In" Type="Int32" />
             <Parameter Name="CourseId" Mode="In" Type="Int32" />
@@ -1000,6 +1009,39 @@
             <Parameter Name="courseId" Mode="In" Type="Int32" />
             <Parameter Name="userId" Mode="In" Type="Int32" />
             <Parameter Name="isDeleted" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AssignGradePercent" ReturnType="Collection(Decimal)">
+            <Parameter Name="AssignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="PointsEarned" Mode="In" Type="Decimal" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddNewAssignment">
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+            <Parameter Name="AssingmentName" Mode="In" Type="String" />
+            <Parameter Name="PossiblePoints" Mode="In" Type="Int32" />
+            <Parameter Name="DueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AssingmentDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetThisCurrentGrade" ReturnType="Collection(String)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FindGradePercent" ReturnType="Collection(Decimal)">
+            <Parameter Name="AssignmentId" Mode="In" Type="Int32" />
+            <Parameter Name="PointsEarned" Mode="In" Type="Decimal" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeachersCourseInfo" ReturnType="Collection(SWC_LMSModel.GetTeachersCourseInfo_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AlterCourse">
+            <Parameter Name="CourseId" Mode="In" Type="Int32" />
+            <Parameter Name="SubjectId" Mode="In" Type="Int32" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="CourseDescription" Mode="In" Type="String" />
+            <Parameter Name="GradeLevel" Mode="In" Type="Byte" />
+            <Parameter Name="IsArchived" Mode="In" Type="Boolean" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAssignmentGrades_Result">
@@ -1141,6 +1183,18 @@
           <Property Type="Int32" Name="RosterId" Nullable="false" />
           <Property Type="Int32" Name="CourseId" Nullable="false" />
           <Property Type="String" Name="CurrentGrade" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="GetTeachersCourseInfo_Result1">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Students" Nullable="true" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetTeachersCourseInfo_Result2">
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Students" Nullable="true" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1387,16 +1441,6 @@
           <FunctionImportMapping FunctionImportName="LmsUserGetAll" FunctionName="SWC_LMSModel.Store.LmsUserGetAll">
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetUserIdByEmail" FunctionName="SWC_LMSModel.Store.GetUserIdByEmail" />
-          <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
-                <ScalarProperty Name="Students" ColumnName="Students" />
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ParentsChildren" FunctionName="SWC_LMSModel.Store.ParentsChildren" />
           <FunctionImportMapping FunctionImportName="ChildrensInfo" FunctionName="SWC_LMSModel.Store.ChildrensInfo">
             <ResultMapping>
@@ -1430,6 +1474,21 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdateRoster" FunctionName="SWC_LMSModel.Store.UpdateRoster" />
           <FunctionImportMapping FunctionImportName="AddToRoster" FunctionName="SWC_LMSModel.Store.AddToRoster" />
+          <FunctionImportMapping FunctionImportName="AssignGradePercent" FunctionName="SWC_LMSModel.Store.AssignGradePercent" />
+          <FunctionImportMapping FunctionImportName="AddNewAssignment" FunctionName="SWC_LMSModel.Store.AddNewAssignment" />
+          <FunctionImportMapping FunctionImportName="GetThisCurrentGrade" FunctionName="SWC_LMSModel.Store.GetThisCurrentGrade" />
+          <FunctionImportMapping FunctionImportName="FindGradePercent" FunctionName="SWC_LMSModel.Store.FindGradePercent" />
+          <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="Students" ColumnName="Students" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AlterCourse" FunctionName="SWC_LMSModel.Store.AlterCourse" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -15,3 +15,4 @@
 /// <reference path="app/deletefromroster.js" />
 /// <reference path="app/addtoroster.js" />
 /// <reference path="app/teacherdashboard.js" />
+/// <reference path="app/gradebook.js" />

@@ -23,15 +23,15 @@
 <div class="container col-md-12">
     <h2>@courseName</h2>
     <div>
-        @Html.ActionLink("Information", "GetThisCourse", "teacher", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+        @Html.ActionLink("Information", "GetThisCourse", "teacher", new { id = @courseId }, new { style = "text-decoration:underline; 1px" })
         <span>|</span>
-        @Html.ActionLink("Roster", "roster", "teacher", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+        @Html.ActionLink("Roster", "roster", "teacher", new { id = @courseId }, new { style = "text-decoration:underline; 1px" })
         <span>|</span>
-        @Html.ActionLink("Gradebook", "Grades", "ParentAndStudent", new { id = @courseId }, new { style = "text-decoration-underline: 1px" })
+        @Html.ActionLink("Gradebook", "Grades", "ParentAndStudent", new { id = @courseId }, new { style = "text-decoration:underline; 1px" })
     </div>
     <div class="row col-md-7">
         <label class="header">Information</label>
-        @using (Html.BeginForm("AddNewAssingment", "Teacher", FormMethod.Post, new { course = Model, id = userId }))
+        @using (Html.BeginForm("AddNewAssingment", "Teacher", FormMethod.Post))
         {
             <fieldset class="scheduler-border">
                 <br />
@@ -58,7 +58,8 @@
                         @Html.TextAreaFor(m => m.AssignmentDescription, new {style = "height: 200px; width: 250px"})
                     </div>
                 </div>
-                <br />
+                <br/>
+                @Html.HiddenFor(m => m.UserId)
                 @Html.HiddenFor(m => m.CourseId)
                 <br />
                 <div class="row">

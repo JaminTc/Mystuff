@@ -48,6 +48,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.2.0.0-alpha01\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -199,7 +202,9 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\api\AddController.cs" />
     <Compile Include="Controllers\api\AdminController.cs" />
+    <Compile Include="Controllers\api\CurrentGradeController.cs" />
     <Compile Include="Controllers\api\DeleteController.cs" />
+    <Compile Include="Controllers\api\GradesController.cs" />
     <Compile Include="Controllers\api\TeacherController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -242,6 +247,12 @@
     <Compile Include="GetTeachersCourseInfo_Result.cs">
       <DependentUpon>SWC-LMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetTeachersCourseInfo_Result1.cs">
+      <DependentUpon>SWC-LMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTeachersCourseInfo_Result2.cs">
+      <DependentUpon>SWC-LMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetThisCourse_Result.cs">
       <DependentUpon>SWC-LMS.tt</DependentUpon>
     </Compile>
@@ -278,6 +289,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Api\GetGrades.cs" />
+    <Compile Include="Models\Api\GradeIds.cs" />
     <Compile Include="Models\Api\StudentSearch.cs" />
     <Compile Include="Models\RosterAddViewModel.cs" />
     <Compile Include="Models\TeacherViewResultsModel.cs" />
@@ -287,6 +300,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Views\AssignmentViewModel.cs" />
+    <Compile Include="Models\Views\GradeBookAssignmentView.cs" />
     <Compile Include="Models\Views\GradeBookViewModel.cs" />
     <Compile Include="Models\Views\LmsUserViewRegistration.cs" />
     <Compile Include="Models\Views\ParentViewModel.cs" />
@@ -338,6 +352,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom\Admin.css" />
+    <Content Include="Content\custom\Gradebook.css" />
     <Content Include="Content\custom\Grades.css" />
     <Content Include="Content\custom\Layout.css" />
     <Content Include="Content\custom\TechRentStudDash.css" />
@@ -381,6 +396,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\app\AddToRoster.js" />
     <Content Include="Scripts\app\DeleteFromRoster.js" />
+    <Content Include="Scripts\app\GradeBook.js" />
     <Content Include="Scripts\app\search.js" />
     <Content Include="Scripts\app\SearchRoster.js" />
     <Content Include="Scripts\app\TeacherDashboard.js" />
@@ -463,7 +479,6 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\AdminDashboard.cshtml" />
     <Content Include="Views\Admin\AdminSearch.cshtml" />
-    <Content Include="Views\Shared\_GetAllRolesPartial.cshtml" />
     <Content Include="Views\Teacher\TeacherDashboard.cshtml" />
     <Content Include="Views\ParentAndStudent\ParentDashboard.cshtml" />
     <Content Include="Views\Teacher\GetThisCourse.cshtml" />

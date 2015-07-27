@@ -11,6 +11,7 @@ namespace SWC_LMS.Models.Views
         public string LastName { get; set; }
         public string Grade { get; set; }
         public int UserId { get; set; }
-        public List<Assignment> Assignments { get; set; }
+        public List<RosterAssignment> Assignments { get; set; }
+        
     }
 }

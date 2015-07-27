@@ -317,6 +317,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="AddNewAssignment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseID" Type="int" Mode="In" />
+    <Parameter Name="AssingmentName" Type="varchar" Mode="In" />
+    <Parameter Name="PossiblePoints" Type="int" Mode="In" />
+    <Parameter Name="DueDate" Type="date" Mode="In" />
+    <Parameter Name="AssingmentDescription" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="AddNewCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserId" Type="int" Mode="In" />
     <Parameter Name="SubjectId" Type="int" Mode="In" />
@@ -332,11 +339,31 @@
     <Parameter Name="userId" Type="int" Mode="In" />
     <Parameter Name="isDeleted" Type="int" Mode="In" />
   </Function>
+  <Function Name="AlterCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="int" Mode="In" />
+    <Parameter Name="SubjectId" Type="int" Mode="In" />
+    <Parameter Name="CourseName" Type="varchar" Mode="In" />
+    <Parameter Name="CourseDescription" Type="varchar" Mode="In" />
+    <Parameter Name="GradeLevel" Type="tinyint" Mode="In" />
+    <Parameter Name="IsArchived" Type="bit" Mode="In" />
+    <Parameter Name="StartDate" Type="date" Mode="In" />
+    <Parameter Name="EndDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="AssignGradePercent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssignmentId" Type="int" Mode="In" />
+    <Parameter Name="PointsEarned" Type="decimal" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
   <Function Name="AssignUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserID" Type="nvarchar" Mode="In" />
     <Parameter Name="RoleID" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="ChildrensInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="FindGradePercent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssignmentId" Type="int" Mode="In" />
+    <Parameter Name="PointsEarned" Type="decimal" Mode="In" />
     <Parameter Name="UserId" Type="int" Mode="In" />
   </Function>
   <Function Name="GetAllSubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -366,6 +393,9 @@
   </Function>
   <Function Name="GetThisCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CourseId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetThisCurrentGrade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="int" Mode="In" />
   </Function>
   <Function Name="GetUserIdByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Email" Type="nvarchar" Mode="In" />

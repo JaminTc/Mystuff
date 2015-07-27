@@ -28,7 +28,7 @@ namespace SWC_LMS.BusinessLogic
             return _repo.GetAllSubjects();
         }
 
-        public void AddNewCourse(Course course)
+        public void AddNewCourse(TeacherViewModel course)
         {
             _repo.AddNewCourse(course);
         }

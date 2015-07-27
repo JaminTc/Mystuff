@@ -238,16 +238,6 @@
     <FunctionImportMapping FunctionImportName="UpdateRosterCurrentGrade" FunctionName="SWC_LMSModel.Store.UpdateRosterCurrentGrade" />
     <FunctionImportMapping FunctionImportName="LmsUserGetAll" FunctionName="SWC_LMSModel.Store.LmsUserGetAll" />
     <FunctionImportMapping FunctionImportName="GetUserIdByEmail" FunctionName="SWC_LMSModel.Store.GetUserIdByEmail" />
-    <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
-          <ScalarProperty Name="Students" ColumnName="Students" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ParentsChildren" FunctionName="SWC_LMSModel.Store.ParentsChildren" />
     <FunctionImportMapping FunctionImportName="ChildrensInfo" FunctionName="SWC_LMSModel.Store.ChildrensInfo">
       <ResultMapping>
@@ -279,5 +269,20 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UpdateRoster" FunctionName="SWC_LMSModel.Store.UpdateRoster" />
     <FunctionImportMapping FunctionImportName="AddToRoster" FunctionName="SWC_LMSModel.Store.AddToRoster" />
+    <FunctionImportMapping FunctionImportName="AssignGradePercent" FunctionName="SWC_LMSModel.Store.AssignGradePercent" />
+    <FunctionImportMapping FunctionImportName="AddNewAssignment" FunctionName="SWC_LMSModel.Store.AddNewAssignment" />
+    <FunctionImportMapping FunctionImportName="GetThisCurrentGrade" FunctionName="SWC_LMSModel.Store.GetThisCurrentGrade" />
+    <FunctionImportMapping FunctionImportName="FindGradePercent" FunctionName="SWC_LMSModel.Store.FindGradePercent" />
+    <FunctionImportMapping FunctionImportName="GetTeachersCourseInfo" FunctionName="SWC_LMSModel.Store.GetTeachersCourseInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SWC_LMSModel.GetTeachersCourseInfo_Result">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="Students" ColumnName="Students" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AlterCourse" FunctionName="SWC_LMSModel.Store.AlterCourse" />
   </EntityContainerMapping>
 </Mapping>

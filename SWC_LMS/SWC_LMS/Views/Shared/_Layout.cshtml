@@ -1,4 +1,30 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Ajax.Utilities
+@{
+    int Id = 0;
+    string Prefix = "Home";
+    if (ViewBag.adminString != null)
+    {
+        Prefix = ViewBag.adminString;
+    }
+    else if (ViewBag.teacherId != null)
+    {
+        Id = ViewBag.teacherId;
+        Prefix = ViewBag.teacherString;
+    }
+    else if (ViewBag.studnetId != null)
+    {
+        Id = ViewBag.studentId;
+        Prefix = ViewBag.studentString;
+    }
+    else if (ViewBag.parentId != null)
+    {
+        Id = ViewBag.parentId;
+        Prefix = ViewBag.parentString;
+    }
+
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,26 +37,28 @@
     @RenderSection("Styles",false)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <img src="http://www.logotypes101.com/logos/43/F372DE3BC90BAEC1BA25CC22C71E532F/Teachers.png" style="width:100px;height:50px;">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top row">
+   
+    <div class="container">
+        
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <img src="http://www.logotypes101.com/logos/43/F372DE3BC90BAEC1BA25CC22C71E532F/Teachers.png" style="width:100px;height:50px; float: left">
+            <ul class="nav navbar-nav" style="padding-left: 100px; position: static">
+                <li>@Html.ActionLink("Home", "Login", "User")</li>
+                <li>@Html.ActionLink("DashBoard", Prefix + "Dashboard", new {id = Id})</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
+</div>
     <div class="container body-content">
         @RenderBody()
 

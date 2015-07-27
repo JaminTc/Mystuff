@@ -16,8 +16,9 @@ namespace SWC_LMS.Controllers
         [Authorize(Roles = "Parent")]
         public ActionResult ParentDashboard(int id)
         {
-            List<ParentViewModel> listOfChildren = _opp.GetParentsChildren(18);  
-
+            List<ParentViewModel> listOfChildren = _opp.GetParentsChildren(18);
+            ViewBag.parentId = id;
+            ViewBag.parentString = "Parent";
             return View(listOfChildren);
         }
 
@@ -25,6 +26,8 @@ namespace SWC_LMS.Controllers
         public ActionResult StudentDashboard(int id)
         {
             List<GetCoursesForStudent_Result> listOfCourses = _opp.GetCoursesForStudent(id);
+            ViewBag.studentId = id;
+            ViewBag.studentString = "Student";
             return View(listOfCourses);
         }
 

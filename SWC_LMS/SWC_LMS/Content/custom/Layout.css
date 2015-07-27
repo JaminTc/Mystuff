@@ -1,13 +1,15 @@
 ﻿body {
     margin: 0 0 50px;
 }
-
+hr {
+    margin: 10px 0 10px 0;
+}
 footer {
     background-color: #f5fffa;
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 50px;
     width: 100%;
     overflow:hidden;
     z-index: 150;

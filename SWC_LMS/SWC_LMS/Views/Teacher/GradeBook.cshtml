@@ -1,25 +1,98 @@
-﻿@model List<SWC_LMS.Models.Views.GradeBookViewModel>
+﻿@using System.Activities.Expressions
+@using System.Collections.Generic
+@using System.Linq
+@using MoreLinq
+@using SWC_LMS.Models.Views
+@model System.Collections.Generic.List<SWC_LMS.Models.Views.GradeBookViewModel>
 @{
     ViewBag.Title = "GradeBook";
+    var courseId = ViewBag.Course;
+    var courseName = ViewBag.CourseName;
+    
+    List<GradeBookAssignmentView> assignmentNameList = new List<GradeBookAssignmentView>();
+    
+    foreach (var listOfAssignments in Model)
+    {
+        foreach (var assignment in listOfAssignments.Assignments)
+        {
+            GradeBookAssignmentView addAssignment = new GradeBookAssignmentView
+            {
+                AssignmentName = assignment.Assignment.AssignmentName,
+                AssigntmentId = assignment.AssignmentId
+            };
+            assignmentNameList.Add(addAssignment);
+        }
+    }
+    IEnumerable<GradeBookAssignmentView> assignments = assignmentNameList.DistinctBy(x => x.AssigntmentId);
+    int counter = 0;          
 }
 
-<h2>GradeBook</h2>
+@section Styles
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/custom/grades.css")">
+}
 
-<table>
+<h2>@courseName-GradeBook</h2>
+<div>
+    @Html.ActionLink("Information", "GetThisCourse", "teacher", new {id = @courseId}, new {style = "text-decoration:underline; 1px"})
+    <span>|</span>
+    @Html.ActionLink("Roster", "roster", "teacher", new {id = @courseId}, new {style = "text-decoration:underline; 1px"})
+    <span>|</span>
+    @Html.ActionLink("Gradebook", "gradebook", "teacher", new {id = @courseId}, new {style = "text-decoration:underline; 1px"})
+</div>
+<br/>
+<br/>
+@using (Html.BeginForm("AddAssingment", "Teacher", new{id = courseId}))
+{
+    <button style="border: black solid 2px; box-shadow: 3px 3px 1px black">Add Assingment</button>
+}
+<br/>
+<table class="table table-striped RosterTable">
     <thead>
     <tr>
         <td>First Name</td>
         <td>Last Name</td>
         <td>Grades</td>
-        <td>
-            @foreach (var n in Model)
-            {
-                foreach (var m in n.Assignments)
-                {
-                    @m.AssignmentName
-                }
-            }
-        </td>
+        @foreach (var assignmentInfo in assignments)
+        {
+            <td class="homework" data-assignmentidmaster="@assignmentInfo.AssigntmentId"> @assignmentInfo.AssignmentName</td>
+        }
     </tr>
     </thead>
+    <tbody>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td class="FirstName">@x.FirstName</td>
+            <td class="LastName">@x.LastName</td>
+            <td class="Grade" data-gradetag="@x.UserId">@x.Grade</td>
+            @for (int i = 0; i < assignments.Count(); i++)
+            {
+                var assignId = x.Assignments.Select(y => y.AssignmentId).ElementAtOrDefault(counter);
+                var assignTitleId = assignments.Select(z => z.AssigntmentId).ElementAt(i);
+                if (assignId == assignTitleId)
+                {
+                    <td class="percentage" id="@assignId@x.UserId" data-idtag="@assignId@x.UserId" data-assignmentid="@assignId" data-studentid="@x.UserId">@x.Assignments.Select(r => r.Percentage).ElementAtOrDefault(counter)%</td>
+                    counter++;
+                }
+                else
+                {
+                    <td class="percentage" id="@assignTitleId@x.UserId" data-idtag="@assignTitleId@x.UserId" data-assignmentid="@assignTitleId" data-studentid="@x.UserId"></td>
+                }
+                if (i >= assignments.Count()-1)
+                {
+                    counter = 0;
+                }
+            }
+        </tr>
+
+    }
+
+    </tbody>
 </table>
+
+@section Scripts {
+    <script src="~/Scripts/app/GradeBook.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+}

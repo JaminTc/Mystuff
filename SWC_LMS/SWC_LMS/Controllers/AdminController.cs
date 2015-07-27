@@ -17,6 +17,7 @@ namespace SWC_LMS.Controllers
         public ActionResult AdminDashboard()
         {
             List<LmsUser> userList = _opp1.GetAll();
+            ViewBag.adminString = "Admin";
             return View(userList);
         }
 
