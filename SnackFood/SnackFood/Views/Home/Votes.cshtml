@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Votes";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $(function () {
+        var id = $('#id').val();
+        var name = $('#name').val();
+        var optional = $('#optional').val();
+        var purchaseLocations = $('#purchaseLocations').val();
+        var purchaseCount = $('#purchaseCount').val();
+        var lastPurchaseDate = $('#lastPurchaseDate').val();
+
+        var SnackObject = {
+            Id: id,
+            Name: name,
+            Optional: optional,
+            PurchaseLocations: purchaseLocations,
+            PurchaseCount: purchaseCount,
+            LastPurchaseDate: lastPurchaseDate
+        };
+
+        $.ajax
+         ({
+             
+             url: 'https://api-snacks.nerderylabs.com/v1',
+             data: JSON.stringify(SnackObject),
+             type: 'GET',
+             headers: { "Authorization": "ApiKey fe152ad3-bbef-4452-aad1-baa0cd10532d" },
+         })
+                 .done(function(returndata){
+                     $.each(returndata, function (i, snack) {
+                         $('#snacks').append('<div class="col-md-3">' + snack.Id + '</div>');
+                         $('#snacks').append('<div class="col-md-3">' + snack.Name + '</div>');
+                         $('#snacks').append('<div class="col-md-3">' + snack.Optional + '</div>');
+                         $('#snacks').append('<div class="col-md-3">' + snack.PurchaseLocations + '</div>');
+                         $('#snacks').append('<div class="col-md-3">' + snack.PurchaseCount + '</div>');
+                         $('#snacks').append('<div class="col-md-3">' + snack.LastPurchaseDate + '</div>');
+                     });
+                 })
+                 
+             
+         });
+</script>
+<h2>Votes</h2>
+<div id="snacks">
+    <ul>
+        <li id="id"></li>
+        <li id="name"></li>
+        <li id="optional"></li>
+        <li id="purchaseLocations"></li>
+        <li id="purchaseCount"></li>
+        <li id="lastPurchaseDate"></li>
+    </ul>
+</div>
