@@ -21,12 +21,12 @@ namespace SnackFood.Controllers.api
 
             myWebRequest.Headers["Authorization"] = "ApiKey fe152ad3-bbef-4452-aad1-baa0cd10532d";
 
-           var theRequest = new StreamReader(myWebRequest.GetResponse().GetResponseStream());
+            var theRequest = new StreamReader(myWebRequest.GetResponse().GetResponseStream());
 
-           var body = theRequest.ReadToEnd();
-           List<ExistingSnacks> SnackList = JsonConvert.DeserializeObject<List<ExistingSnacks>>(body);
+            var body = theRequest.ReadToEnd();
+            List<ExistingSnacks> snackList = JsonConvert.DeserializeObject<List<ExistingSnacks>>(body);
             
-            return SnackList;
+            return snackList;
            
         }
            

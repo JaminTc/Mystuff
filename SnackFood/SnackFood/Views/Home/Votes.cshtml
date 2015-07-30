@@ -6,45 +6,47 @@
 
 <script>
     $(function () {
+        GetSnacks();
+    });
+    function GetSnacks() {
         $.ajax
-         ({
-             
-             url: '/api/Votes/',
-             type: 'GET',
-         })
-                 .done(function(returndata){
-                     $.each(returndata, function (i, snack) {
-                         $('.id').append('<div class="col-md-3">' + snack.id+ '</div>');
-                         $('.name').append('<div class="col-md-3">' + snack.name + '</div>');
-                         $('.optional').append('<div class="col-md-3">' + snack.optional + '</div>');
-                         $('.purchaseLocations').append('<div class="col-md-3">' + snack.purchaseLocations + '</div>');
-                         $('.purchaseCount').append('<div class="col-md-3">' + snack.purchaseCount + '</div>');
-                         $('.lastPurchaseDate').append('<div class="col-md-3">' + snack.lastPurchaseDate + '</div>');
-                     });
-                 })
-         });
+            ({
+                url: '/api/Votes/',
+                type: 'GET'
+            })
+            .done(function (returndata) {
+                $.each(returndata, function (i, snack) {
+                        $('#snacks').append( '<tr><td>' + snack.id + '</td><td>' + snack.name + '</td><td>' + snack.optional + '</td><td>' + snack.purchaseLocations + '</td><td>' + snack.purchaseCount + '</td><td>' + snack.lastPurchaseDate + '</td></tr>');
+                    
+                    
+
+                });
+            });
+    }
+     
+   
 </script>
 <h2>Votes</h2>
 <div class="container">
-    <table>
+    <table class="table-bordered">
         <thead>
-            <tr class="row col-md-12">
-                <th class="co-md-2">Id</th>
-                <th class="co-md-2">Name</th>
-                <th class="co-md-2">Optional</th>
-                <th class="co-md-2">Purchase Location</th>
-                <th class="co-md-2">Purchase Count</th>
-                <th class="co-md-2">Last Purchase Date</th>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Optional</th>
+                <th>Purchase Location</th>
+                <th>Purchase Count</th>
+                <th>Last Purchase Date</th>
             </tr>
         </thead>
-        <tbody class="row col-md-12" id="snacks">
+        <tbody id="snacks">
             <tr>
-                <td class="id co-md-2"></td>
-                <td class="name co-md-2"></td>
-                <td class="optional co-md-2"></td>
-                <td class="purchaseLocations co-md-2"></td>
-                <td class="purchaseCount co-md-2"></td>
-                <td class="lastPurchaseDate co-md-2"></td>
+                @*<td class="id"></td>
+                <td class="name"></td>
+                <td class="optional"></td>
+                <td class="purchaseLocations"></td>
+                <td class="purchaseCount"></td>
+                <td class="lastPurchaseDate"></td>*@
             </tr>
         </tbody>
     </table>
