@@ -30,3 +30,35 @@ c:\users\jamin tc\documents\visual studio 2013\Projects\SnackFood\SnackFood\bin\
 c:\users\jamin tc\documents\visual studio 2013\Projects\SnackFood\SnackFood\obj\Debug\SnackFood.csprojResolveAssemblyReference.cache
 c:\users\jamin tc\documents\visual studio 2013\Projects\SnackFood\SnackFood\obj\Debug\SnackFood.dll
 c:\users\jamin tc\documents\visual studio 2013\Projects\SnackFood\SnackFood\obj\Debug\SnackFood.pdb
+C:\Mystuff\SnackFood\SnackFood\bin\SnackFood.dll.config
+C:\Mystuff\SnackFood\SnackFood\bin\SnackFood.dll
+C:\Mystuff\SnackFood\SnackFood\bin\SnackFood.pdb
+C:\Mystuff\SnackFood\SnackFood\bin\Antlr3.Runtime.dll
+C:\Mystuff\SnackFood\SnackFood\bin\Microsoft.Web.Infrastructure.dll
+C:\Mystuff\SnackFood\SnackFood\bin\Newtonsoft.Json.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Net.Http.Formatting.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Helpers.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.WebHost.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Mvc.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Optimization.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Razor.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Deployment.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Razor.dll
+C:\Mystuff\SnackFood\SnackFood\bin\WebGrease.dll
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Helpers.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Mvc.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Optimization.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Razor.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Deployment.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Razor.xml
+C:\Mystuff\SnackFood\SnackFood\bin\Antlr3.Runtime.pdb
+C:\Mystuff\SnackFood\SnackFood\bin\Newtonsoft.Json.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Net.Http.Formatting.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.xml
+C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.WebHost.xml
+C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.csprojResolveAssemblyReference.cache
+C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.dll
+C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.pdb

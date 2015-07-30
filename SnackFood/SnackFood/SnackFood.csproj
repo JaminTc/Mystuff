@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Models\ExistingSnacks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\VotesRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
