@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Web;
 using Newtonsoft.Json;
 using SnackFood.Models;
@@ -19,18 +20,17 @@ namespace SnackFood.Repositories
 
             myWebRequest.Headers["Authorization"] = "ApiKey fe152ad3-bbef-4452-aad1-baa0cd10532d";
 
+            myWebRequest.ContentType = "application/json";
+
             myWebRequest.Method = "Post";
 
             string json = JsonConvert.SerializeObject(snack);
 
-            myWebRequest.ContentLength = json.Length;
+            var theRequest = new StreamWriter(myWebRequest.GetRequestStream());
+  
+            theRequest.Write(json);
 
-            Stream dataStream = myWebRequest.GetRequestStream();
-
-            var theRequest = new StreamWriter(dataStream);
-            
-            theRequest.Write(theRequest);              
-            
+            string dataStream = new StreamReader(myWebRequest.GetResponse().GetResponseStream()).ReadToEnd();
         }
     }
 }
