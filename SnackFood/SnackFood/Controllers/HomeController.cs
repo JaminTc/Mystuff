@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -36,25 +36,39 @@ namespace SnackFood.Controllers
             return View();
         }
 
-        public ActionResult Suggestions(ExistingSnacks snacks)
+        public ActionResult Suggestions()
         {
             VotesController vote= new VotesController();
             var snack = vote.Get();
-            IEnumerable<SelectListItem> selectSnackName;
+            var snacks = new ExistingSnackList();
             foreach (var m in snack)
             {
                 if (m.optional != "false")
                 {
-                    
+                    snacks.SelectSnackName = snack.Select(x => new System.Web.Mvc.SelectListItem()
+                    {
+                        Value = x.id.ToString(),
+                        Text = x.name.ToString()
+                    });
                 }
             }
-            return View();
+            return View(snacks);
         }
 
-        public ActionResult AddSuggestions(ExistingSnacks snacks)
+        public ActionResult AddSuggestions(ExistingSnackList snacks)
         {
-            _repo.Post(snacks);
+            ExistingSnacks snack = new ExistingSnacks();
+            snack.id = snacks.Id;
+            snack.name = snacks.Name;
+            snack.optional = "true";
+            snack.purchaseLocations = snacks.PurchaseLocations;
+            _repo.Post(snack);
            return RedirectToAction("Votes");
+        }
+
+        public ActionResult ShoppingList()
+        {
+            return View(); 
         }
     }
 }

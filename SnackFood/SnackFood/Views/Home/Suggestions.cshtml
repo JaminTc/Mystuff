@@ -1,7 +1,38 @@
-﻿
+﻿@model SnackFood.Models.ExistingSnackList
 @{
     ViewBag.Title = "Suggestions";
 }
 
 <h2>Suggestions</h2>
 
+@using (Html.BeginForm("AddSuggestions", "Home", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="border: solid black 1px; padding-top: 10px; padding-bottom: 20px">
+                <h4>Select A Snack</h4>
+                @Html.DropDownListFor(x => x.SelectSnackName, null, new {style = "height: 27px" })
+                &nbsp;
+                <button type="submit">Save</button>
+            </div>
+            <div class="col-md-1" style="margin-left:25px"><br/>&nbsp;<h4>Or</h4></div>
+            <div class="col-md-4" style="border: solid black 1px; padding-top: 10px; padding-bottom: 20px">
+                <h4>Make a Suggestion</h4>
+                <label>Id</label>
+                <br/>
+                @Html.TextBoxFor(x => x.Id)
+                <br/>
+                <label>Name</label>
+                <br/>
+                @Html.TextBoxFor(x => x.Name)
+                <br/>
+                <label>Purchase Location</label>
+                <br/>
+                @Html.TextBoxFor(x => x.PurchaseLocations)
+                <br/>
+                <br/>
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+}

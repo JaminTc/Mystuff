@@ -62,3 +62,35 @@ C:\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.WebHost.xml
 C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.csprojResolveAssemblyReference.cache
 C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.dll
 C:\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.pdb
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\SnackFood.dll.config
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\SnackFood.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\SnackFood.pdb
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\Antlr3.Runtime.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\Microsoft.Web.Infrastructure.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\Newtonsoft.Json.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Net.Http.Formatting.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Helpers.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.WebHost.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Mvc.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Optimization.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Razor.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Deployment.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Razor.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\WebGrease.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Helpers.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Mvc.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Optimization.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Razor.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Deployment.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.WebPages.Razor.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\Antlr3.Runtime.pdb
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\Newtonsoft.Json.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Net.Http.Formatting.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\bin\System.Web.Http.WebHost.xml
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.csprojResolveAssemblyReference.cache
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.dll
+C:\Bootcamp stuff\Mystuff\SnackFood\SnackFood\obj\Debug\SnackFood.pdb

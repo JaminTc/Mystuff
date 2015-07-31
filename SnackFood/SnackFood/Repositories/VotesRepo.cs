@@ -19,10 +19,18 @@ namespace SnackFood.Repositories
 
             myWebRequest.Headers["Authorization"] = "ApiKey fe152ad3-bbef-4452-aad1-baa0cd10532d";
 
-            var theRequest = new StreamReader(myWebRequest.GetResponse().GetResponseStream());
+            myWebRequest.Method = "Post";
 
-            var body = theRequest.ReadToEnd();
-            string json = JsonConvert.SerializeObject(body);
+            string json = JsonConvert.SerializeObject(snack);
+
+            myWebRequest.ContentLength = json.Length;
+
+            Stream dataStream = myWebRequest.GetRequestStream();
+
+            var theRequest = new StreamWriter(dataStream);
+            
+            theRequest.Write(theRequest);              
+            
         }
     }
 }
